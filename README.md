@@ -25,7 +25,3 @@ Este es un sencillo juego web estilo *Higher or Lower*, donde el jugador debe ad
 
 - `index.html` — Archivo principal del juego.
 - `README.md` — Descripción del proyecto.
-
-## 📬 Contacto
-
-Desarrollado como un proyecto libre, educativo y divertido. ¡Gracias por jugar!
