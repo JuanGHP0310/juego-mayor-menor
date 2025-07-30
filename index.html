@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Juego Mayor o Menor</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 2em;
+    }
+    .menu {
+      margin-top: 40px;
+    }
+    .menu button {
+      display: block;
+      width: 250px;
+      margin: 15px auto;
+      padding: 15px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .enabled {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .enabled:hover {
+      background-color: #45a049;
+    }
+    .disabled {
+      background-color: #ccc;
+      color: #666;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <h1>¿Cuál modo quieres jugar?</h1>
+  <div class="menu">
+    <button class="enabled" onclick="location.href='modo_google_final_unico.html'">🌐 Modo Google</button>
+    <button class="disabled" disabled>🦸 Modo Marvel (próximamente)</button>
+    <button class="disabled" disabled>🌌 Modo Universo (próximamente)</button>
+  </div>
+</body>
+</html>
