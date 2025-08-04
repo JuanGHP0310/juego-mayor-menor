@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Modo Google</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; background: #f0f0f0; }
+    .card-container { display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; }
+    .card { background: white; padding: 1rem; border-radius: 1rem; box-shadow: 0 0 10px rgba(0,0,0,0.2); width: 200px; }
+    img { width: 100px; height: 100px; object-fit: contain; }
+    .buttons { margin-top: 2rem; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <h1>¿Qué término se busca más en Google?</h1>
+  <div id="score">Puntuación: 0</div>
+  <div class="card-container">
+    <div class="card" id="card1">
+      <h3 id="name1"></h3>
+      <img id="img1">
+      <p id="value1" class="hidden"></p>
+    </div>
+    <div class="card" id="card2">
+      <h3 id="name2"></h3>
+      <img id="img2">
+      <p id="value2" class="hidden"></p>
+    </div>
+  </div>
+  <div class="buttons">
+    <button onclick="choose('left')" id="btnLeft">Izquierda</button>
+    <button onclick="choose('right')" id="btnRight">Derecha</button>
+    <button onclick="next()" id="btnNext" class="hidden">Continuar</button>
+    <button onclick="reset()" id="btnReset" class="hidden">Reiniciar</button>
+  </div>
+  <script>
+    let data = [];
+    let score = 0;
+    let currentPair = [];
+
+    fetch('google_data_final.json')
+      .then(res => res.json())
+      .then(json => {
+        data = json;
+        newRound();
+      });
+
+    function newRound() {
+      currentPair = [data[Math.floor(Math.random()*data.length)], data[Math.floor(Math.random()*data.length)]];
+      while(currentPair[0].name === currentPair[1].name){
+        currentPair[1] = data[Math.floor(Math.random()*data.length)];
+      }
+      document.getElementById("name1").innerText = currentPair[0].name;
+      document.getElementById("img1").src = currentPair[0].image;
+      document.getElementById("value1").innerText = currentPair[0].value;
+      document.getElementById("name2").innerText = currentPair[1].name;
+      document.getElementById("img2").src = currentPair[1].image;
+      document.getElementById("value2").innerText = currentPair[1].value;
+      document.getElementById("value1").classList.add("hidden");
+      document.getElementById("value2").classList.add("hidden");
+      document.getElementById("btnNext").classList.add("hidden");
+      document.getElementById("btnReset").classList.add("hidden");
+      document.getElementById("btnLeft").disabled = false;
+      document.getElementById("btnRight").disabled = false;
+    }
+
+    function choose(side) {
+      const correct = currentPair[0].value >= currentPair[1].value ? 'left' : 'right';
+      document.getElementById("value1").classList.remove("hidden");
+      document.getElementById("value2").classList.remove("hidden");
+      document.getElementById("btnLeft").disabled = true;
+      document.getElementById("btnRight").disabled = true;
+      if(side === correct) {
+        score++;
+        document.getElementById("score").innerText = "Puntuación: " + score;
+        document.getElementById("btnNext").classList.remove("hidden");
+      } else {
+        score = 0;
+        document.getElementById("score").innerText = "Puntuación: 0";
+        document.getElementById("btnReset").classList.remove("hidden");
+      }
+    }
+
+    function next() {
+      newRound();
+    }
+
+    function reset() {
+      score = 0;
+      document.getElementById("score").innerText = "Puntuación: 0";
+      newRound();
+    }
+  </script>
+</body>
+</html>
