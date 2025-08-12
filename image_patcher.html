@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patcher de imágenes — Marvel y ¿Qué hay más?</title>
+<style>
+  :root{--bg:#0f1222;--card:#171a2e;--text:#e9ecf1;--muted:#a9afc3;--accent:#5dd0ff;--ok:#39d98a;--bad:#ff5d5d;--border:#242842}
+  body{margin:0;background:linear-gradient(180deg,#0d1020,#0f1222);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial;min-height:100vh;display:flex;align-items:center;justify-content:center}
+  .wrap{width:min(900px,92vw);background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
+  h1{margin:0 0 10px;font-size:20px;color:var(--accent)}
+  p{margin:.5em 0;color:var(--muted)}
+  .row{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;margin-top:10px}
+  input[type=text]{width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#111526;color:var(--text)}
+  button{padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:#0e1330;color:var(--text);cursor:pointer;font-weight:700}
+  button.primary{background:var(--accent);color:#081018;border-color:transparent}
+  .log{margin-top:12px;background:#0b0e1d;border:1px dashed #2a2f4a;border-radius:10px;padding:10px;min-height:90px;white-space:pre-wrap;color:#cbd3ff;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+  .small{font-size:12px;color:#99a2c8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Patcher de imágenes — Marvel y «¿Qué hay más?»</h1>
+  <p>Genera nuevas URLs de imagen para tus JSON existentes. Úsalo desde <strong>GitHub Pages</strong> del mismo repo para evitar CORS.</p>
+  <p class="small">Ruta base (déjalo como <code>/</code> si este archivo está en la raíz):</p>
+  <div class="row">
+    <input id="base" type="text" value="/" />
+    <button id="btnMarvel" class="primary">Generar <b>marvel_data_final.json</b> con imágenes</button>
+    <button id="btnUniv" class="primary">Generar <b>universo_data_final.json</b> con imágenes</button>
+  </div>
+  <div class="log" id="log">Listo. Pulsa un botón para empezar…</div>
+  <p class="small">Nota: usa <em>Unsplash</em> para fotos genéricas (estéticas y libres). Si deseas imágenes fijas/curadas (Wikimedia), dímelo y preparo una versión estable.</p>
+</div>
+
+<script>
+function log(msg){ const el=document.getElementById('log'); el.textContent += (el.textContent? '\n':'') + msg; el.scrollTop=el.scrollHeight; }
+function saveJSON(name, data){
+  const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+  const a = Object.assign(document.createElement('a'), {href:URL.createObjectURL(blob), download:name});
+  document.body.appendChild(a); a.click(); URL.revokeObjectURL(a.href); a.remove();
+}
+
+function sanitizeName(n){
+  n = String(n||'').trim();
+  n = n.replace(/\s*\([^)]*\)\s*/g,' ').replace(/\s{2,}/g,' ').trim(); // quita paréntesis
+  return n;
+}
+
+// --- MARVEL ---
+function marvelKeyword(name){
+  const raw = sanitizeName(name);
+  const map = {
+    "spider-man":"spiderman cosplay",
+    "hombre araña":"spiderman cosplay",
+    "iron man":"iron man cosplay suit",
+    "captain america":"captain america cosplay shield",
+    "capitán américa":"captain america cosplay shield",
+    "black widow":"black widow cosplay",
+    "thor":"thor cosplay",
+    "hulk":"hulk cosplay",
+    "wolverine":"wolverine cosplay",
+    "black panther":"black panther cosplay",
+    "doctor strange":"doctor strange cosplay",
+    "scarlet witch":"scarlet witch cosplay",
+    "wanda maximoff":"scarlet witch cosplay",
+    "vision":"vision cosplay",
+    "ant-man":"ant-man cosplay helmet",
+    "wasp":"wasp cosplay",
+    "captain marvel":"captain marvel cosplay",
+    "thanos":"thanos cosplay",
+    "loki":"loki cosplay",
+    "hawkeye":"archer cosplay",
+    "deadpool":"deadpool cosplay",
+    "magneto":"magneto cosplay",
+    "doctor doom":"doctor doom cosplay",
+    "venom":"venom cosplay",
+    "daredevil":"daredevil cosplay",
+    "punisher":"punisher cosplay",
+    "starlord":"starlord cosplay helmet",
+    "star-lord":"starlord cosplay helmet",
+    "gamora":"gamora cosplay",
+    "groot":"tree man cosplay",
+    "rocket raccoon":"raccoon cosplay"
+  };
+  const k = raw.toLowerCase();
+  return map[k] || (raw + " cosplay");
+}
+
+async function patchMarvel(base){
+  log("— Cargando "+base+"marvel_data_final.json …");
+  const res = await fetch(base.replace(/\/?$/,'/') + "marvel_data_final.json?cb="+Date.now());
+  if(!res.ok){ log("  ✖ No se pudo cargar el JSON ("+res.status+")"); return; }
+  const data = await res.json();
+  const out = (Array.isArray(data)?data:[]).map(it=>{
+    const name=sanitizeName(it.name);
+    const kw = marvelKeyword(name);
+    const image = "https://source.unsplash.com/800x500/?"+encodeURIComponent(kw);
+    return { ...it, name, image };
+  });
+  log("  ✓ Generadas "+out.length+" imágenes (Unsplash, término=«… cosplay»).");
+  saveJSON("marvel_data_final.json", out);
+  log("  ⬇️ Archivo descargado. Sube y reemplaza en el repo.");
+}
+
+// --- UNIVERSO ---
+function universoKeyword(name){
+  const raw = sanitizeName(name);
+  // mapeos puntuales español -> inglés para mejores resultados
+  const dict = {
+    "elefantes":"elephant", "museos":"museum", "ordenadores":"computer",
+    "aves":"birds", "serpientes":"snake", "libros":"books", "árboles":"trees",
+    "coches":"car", "aviones":"airplane", "perros":"dog", "gatos":"cat",
+    "ballenas":"whale", "tiburones":"shark", "planetas":"planet", "estrellas":"stars"
+  };
+  const k = raw.toLowerCase();
+  return dict[k] || raw;
+}
+async function patchUniverso(base){
+  log("— Cargando "+base+"universo_data_final.json …");
+  const res = await fetch(base.replace(/\/?$/,'/') + "universo_data_final.json?cb="+Date.now());
+  if(!res.ok){ log("  ✖ No se pudo cargar el JSON ("+res.status+")"); return; }
+  const data = await res.json();
+  const out = (Array.isArray(data)?data:[]).map(it=>{
+    const name=sanitizeName(it.name);
+    const kw = universoKeyword(name);
+    const image = "https://source.unsplash.com/800x500/?"+encodeURIComponent(kw);
+    return { ...it, name, image };
+  });
+  log("  ✓ Generadas "+out.length+" imágenes (Unsplash).");
+  saveJSON("universo_data_final.json", out);
+  log("  ⬇️ Archivo descargado. Sube y reemplaza en el repo.");
+}
+
+document.getElementById('btnMarvel').addEventListener('click', ()=>patchMarvel(document.getElementById('base').value||'/'));
+document.getElementById('btnUniv').addEventListener('click', ()=>patchUniverso(document.getElementById('base').value||'/'));
+</script>
+</body>
+</html>
