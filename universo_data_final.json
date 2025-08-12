@@ -1,0 +1,552 @@
+[
+  {
+    "name": "Elefantes",
+    "value": 86555804399,
+    "image": "https://loremflickr.com/800/500/elephant"
+  },
+  {
+    "name": "Leones",
+    "value": 58757229412,
+    "image": "https://loremflickr.com/800/500/lion"
+  },
+  {
+    "name": "Tigres",
+    "value": 11151501892,
+    "image": "https://loremflickr.com/800/500/tiger"
+  },
+  {
+    "name": "Jirafas",
+    "value": 53192180565,
+    "image": "https://loremflickr.com/800/500/giraffe"
+  },
+  {
+    "name": "Zebras",
+    "value": 70729745682,
+    "image": "https://loremflickr.com/800/500/zebra"
+  },
+  {
+    "name": "Rinocerontes",
+    "value": 4047719743,
+    "image": "https://loremflickr.com/800/500/rhinoceros"
+  },
+  {
+    "name": "Hipopótamos",
+    "value": 90686319195,
+    "image": "https://loremflickr.com/800/500/hippopotamus"
+  },
+  {
+    "name": "Osos",
+    "value": 76814591501,
+    "image": "https://loremflickr.com/800/500/bear"
+  },
+  {
+    "name": "Perros",
+    "value": 37584743968,
+    "image": "https://loremflickr.com/800/500/dog"
+  },
+  {
+    "name": "Gatos",
+    "value": 89200462323,
+    "image": "https://loremflickr.com/800/500/cat"
+  },
+  {
+    "name": "Lobos",
+    "value": 14345954431,
+    "image": "https://loremflickr.com/800/500/wolf"
+  },
+  {
+    "name": "Zorros",
+    "value": 57095158296,
+    "image": "https://loremflickr.com/800/500/fox"
+  },
+  {
+    "name": "Ballenas",
+    "value": 60808834522,
+    "image": "https://loremflickr.com/800/500/whale"
+  },
+  {
+    "name": "Delfines",
+    "value": 37450753307,
+    "image": "https://loremflickr.com/800/500/dolphin"
+  },
+  {
+    "name": "Orcas",
+    "value": 72893714331,
+    "image": "https://loremflickr.com/800/500/orca"
+  },
+  {
+    "name": "Águilas",
+    "value": 24747449214,
+    "image": "https://loremflickr.com/800/500/eagle"
+  },
+  {
+    "name": "Búhos",
+    "value": 41340359550,
+    "image": "https://loremflickr.com/800/500/owl"
+  },
+  {
+    "name": "Pingüinos",
+    "value": 89514298247,
+    "image": "https://loremflickr.com/800/500/penguin"
+  },
+  {
+    "name": "Flamencos",
+    "value": 83784784100,
+    "image": "https://loremflickr.com/800/500/flamingo"
+  },
+  {
+    "name": "Patos",
+    "value": 18034195865,
+    "image": "https://loremflickr.com/800/500/duck"
+  },
+  {
+    "name": "Gansos",
+    "value": 73708301861,
+    "image": "https://loremflickr.com/800/500/goose"
+  },
+  {
+    "name": "Cisnes",
+    "value": 72681310933,
+    "image": "https://loremflickr.com/800/500/swan"
+  },
+  {
+    "name": "Serpientes",
+    "value": 3944909549,
+    "image": "https://loremflickr.com/800/500/snake"
+  },
+  {
+    "name": "Cocodrilos",
+    "value": 45522130372,
+    "image": "https://loremflickr.com/800/500/crocodile"
+  },
+  {
+    "name": "Tortugas",
+    "value": 2098555541,
+    "image": "https://loremflickr.com/800/500/turtle"
+  },
+  {
+    "name": "Ranas",
+    "value": 42119787069,
+    "image": "https://loremflickr.com/800/500/frog"
+  },
+  {
+    "name": "Sapos",
+    "value": 5323417159,
+    "image": "https://loremflickr.com/800/500/toad"
+  },
+  {
+    "name": "Iguanas",
+    "value": 8928203543,
+    "image": "https://loremflickr.com/800/500/iguana"
+  },
+  {
+    "name": "Hormigas",
+    "value": 67568038623,
+    "image": "https://loremflickr.com/800/500/ant"
+  },
+  {
+    "name": "Abejas",
+    "value": 12094737776,
+    "image": "https://loremflickr.com/800/500/bee"
+  },
+  {
+    "name": "Mariposas",
+    "value": 17720016480,
+    "image": "https://loremflickr.com/800/500/butterfly"
+  },
+  {
+    "name": "Arañas",
+    "value": 67258127644,
+    "image": "https://loremflickr.com/800/500/spider"
+  },
+  {
+    "name": "Escorpiones",
+    "value": 77081138140,
+    "image": "https://loremflickr.com/800/500/scorpion"
+  },
+  {
+    "name": "Libélulas",
+    "value": 35068963259,
+    "image": "https://loremflickr.com/800/500/dragonfly"
+  },
+  {
+    "name": "Humanos",
+    "value": 566585508,
+    "image": "https://loremflickr.com/800/500/human"
+  },
+  {
+    "name": "Niños",
+    "value": 936767946,
+    "image": "https://loremflickr.com/800/500/children"
+  },
+  {
+    "name": "Personas mayores (65+)",
+    "value": 651325357,
+    "image": "https://loremflickr.com/800/500/elderly"
+  },
+  {
+    "name": "Adolescentes",
+    "value": 454341003,
+    "image": "https://loremflickr.com/800/500/teenager"
+  },
+  {
+    "name": "Países",
+    "value": 227416684,
+    "image": "https://loremflickr.com/800/500/country"
+  },
+  {
+    "name": "Ciudades",
+    "value": 997413371,
+    "image": "https://loremflickr.com/800/500/city"
+  },
+  {
+    "name": "Capitales",
+    "value": 579064866,
+    "image": "https://loremflickr.com/800/500/capital+city"
+  },
+  {
+    "name": "Idiomas",
+    "value": 810959928,
+    "image": "https://loremflickr.com/800/500/language"
+  },
+  {
+    "name": "Monedas",
+    "value": 783757614,
+    "image": "https://loremflickr.com/800/500/currency"
+  },
+  {
+    "name": "Contintentes",
+    "value": 740739835,
+    "image": "https://loremflickr.com/800/500/continent"
+  },
+  {
+    "name": "Museos",
+    "value": 26465,
+    "image": "https://loremflickr.com/800/500/museum"
+  },
+  {
+    "name": "Bibliotecas",
+    "value": 93547,
+    "image": "https://loremflickr.com/800/500/library"
+  },
+  {
+    "name": "Universidades",
+    "value": 40957,
+    "image": "https://loremflickr.com/800/500/university"
+  },
+  {
+    "name": "Colegios",
+    "value": 52396,
+    "image": "https://loremflickr.com/800/500/school"
+  },
+  {
+    "name": "Hospitales",
+    "value": 88139,
+    "image": "https://loremflickr.com/800/500/hospital"
+  },
+  {
+    "name": "Ordenadores",
+    "value": 697802251,
+    "image": "https://loremflickr.com/800/500/computer"
+  },
+  {
+    "name": "Tablets",
+    "value": 400958212,
+    "image": "https://loremflickr.com/800/500/tablet"
+  },
+  {
+    "name": "Teléfonos móviles",
+    "value": 470407376,
+    "image": "https://loremflickr.com/800/500/smartphone"
+  },
+  {
+    "name": "Smartwatches",
+    "value": 965954266,
+    "image": "https://loremflickr.com/800/500/smartwatch"
+  },
+  {
+    "name": "Televisores",
+    "value": 555743829,
+    "image": "https://loremflickr.com/800/500/television"
+  },
+  {
+    "name": "Coches",
+    "value": 60607444,
+    "image": "https://loremflickr.com/800/500/car"
+  },
+  {
+    "name": "Motos",
+    "value": 16250908,
+    "image": "https://loremflickr.com/800/500/motorcycle"
+  },
+  {
+    "name": "Bicicletas",
+    "value": 33283328,
+    "image": "https://loremflickr.com/800/500/bicycle"
+  },
+  {
+    "name": "Aviones",
+    "value": 30168366,
+    "image": "https://loremflickr.com/800/500/airplane"
+  },
+  {
+    "name": "Barcos",
+    "value": 8603410,
+    "image": "https://loremflickr.com/800/500/ship"
+  },
+  {
+    "name": "Trenes",
+    "value": 45387076,
+    "image": "https://loremflickr.com/800/500/train"
+  },
+  {
+    "name": "Autobuses",
+    "value": 2833170,
+    "image": "https://loremflickr.com/800/500/bus"
+  },
+  {
+    "name": "Casas",
+    "value": 631691772,
+    "image": "https://loremflickr.com/800/500/house"
+  },
+  {
+    "name": "Apartamentos",
+    "value": 594768804,
+    "image": "https://loremflickr.com/800/500/apartment"
+  },
+  {
+    "name": "Rascacielos",
+    "value": 30261,
+    "image": "https://loremflickr.com/800/500/skyscraper"
+  },
+  {
+    "name": "Puentes",
+    "value": 77228,
+    "image": "https://loremflickr.com/800/500/bridge"
+  },
+  {
+    "name": "Túneles",
+    "value": 28964,
+    "image": "https://loremflickr.com/800/500/tunnel"
+  },
+  {
+    "name": "Carreteras",
+    "value": 1042,
+    "image": "https://loremflickr.com/800/500/highway"
+  },
+  {
+    "name": "Libros",
+    "value": 76328245,
+    "image": "https://loremflickr.com/800/500/book"
+  },
+  {
+    "name": "Revistas",
+    "value": 760138427,
+    "image": "https://loremflickr.com/800/500/magazine"
+  },
+  {
+    "name": "Periódicos",
+    "value": 677741645,
+    "image": "https://loremflickr.com/800/500/newspaper"
+  },
+  {
+    "name": "Películas",
+    "value": 63315224,
+    "image": "https://loremflickr.com/800/500/movie"
+  },
+  {
+    "name": "Series",
+    "value": 245924373,
+    "image": "https://loremflickr.com/800/500/tv+series"
+  },
+  {
+    "name": "Videojuegos",
+    "value": 72470545,
+    "image": "https://loremflickr.com/800/500/videogame"
+  },
+  {
+    "name": "Estadios",
+    "value": 4217,
+    "image": "https://loremflickr.com/800/500/stadium"
+  },
+  {
+    "name": "Teatros",
+    "value": 43409,
+    "image": "https://loremflickr.com/800/500/theatre"
+  },
+  {
+    "name": "Cines",
+    "value": 9387,
+    "image": "https://loremflickr.com/800/500/cinema"
+  },
+  {
+    "name": "Restaurantes",
+    "value": 67491,
+    "image": "https://loremflickr.com/800/500/restaurant"
+  },
+  {
+    "name": "Hoteles",
+    "value": 31295,
+    "image": "https://loremflickr.com/800/500/hotel"
+  },
+  {
+    "name": "Aeropuertos",
+    "value": 36600,
+    "image": "https://loremflickr.com/800/500/airport"
+  },
+  {
+    "name": "Parques",
+    "value": 702474,
+    "image": "https://loremflickr.com/800/500/park"
+  },
+  {
+    "name": "Ríos",
+    "value": 509993,
+    "image": "https://loremflickr.com/800/500/river"
+  },
+  {
+    "name": "Lagos",
+    "value": 225643,
+    "image": "https://loremflickr.com/800/500/lake"
+  },
+  {
+    "name": "Mares",
+    "value": 566427,
+    "image": "https://loremflickr.com/800/500/sea"
+  },
+  {
+    "name": "Océanos",
+    "value": 139739,
+    "image": "https://loremflickr.com/800/500/ocean"
+  },
+  {
+    "name": "Montañas",
+    "value": 759490,
+    "image": "https://loremflickr.com/800/500/mountain"
+  },
+  {
+    "name": "Volcanes",
+    "value": 981957,
+    "image": "https://loremflickr.com/800/500/volcano"
+  },
+  {
+    "name": "Islas",
+    "value": 926245,
+    "image": "https://loremflickr.com/800/500/island"
+  },
+  {
+    "name": "Desiertos",
+    "value": 599782,
+    "image": "https://loremflickr.com/800/500/desert"
+  },
+  {
+    "name": "Planetas",
+    "value": 523165852995,
+    "image": "https://loremflickr.com/800/500/planet"
+  },
+  {
+    "name": "Lunas",
+    "value": 861037124392,
+    "image": "https://loremflickr.com/800/500/moon"
+  },
+  {
+    "name": "Estrellas",
+    "value": 887794666272,
+    "image": "https://loremflickr.com/800/500/stars"
+  },
+  {
+    "name": "Galaxias",
+    "value": 208906739442,
+    "image": "https://loremflickr.com/800/500/galaxy"
+  },
+  {
+    "name": "Cúmulos",
+    "value": 104484341332,
+    "image": "https://loremflickr.com/800/500/star+cluster"
+  },
+  {
+    "name": "Nebulosas",
+    "value": 476276711930,
+    "image": "https://loremflickr.com/800/500/nebula"
+  },
+  {
+    "name": "Computadoras cuánticas",
+    "value": 380425119,
+    "image": "https://loremflickr.com/800/500/quantum+computer"
+  },
+  {
+    "name": "Satélites",
+    "value": 454815084,
+    "image": "https://loremflickr.com/800/500/satellite"
+  },
+  {
+    "name": "Estaciones espaciales",
+    "value": 441418711,
+    "image": "https://loremflickr.com/800/500/space+station"
+  },
+  {
+    "name": "Cohetes",
+    "value": 501464916,
+    "image": "https://loremflickr.com/800/500/rocket"
+  },
+  {
+    "name": "Museos de ciencia",
+    "value": 927537743,
+    "image": "https://loremflickr.com/800/500/science+museum"
+  },
+  {
+    "name": "Museos de arte",
+    "value": 782839338,
+    "image": "https://loremflickr.com/800/500/art+museum"
+  },
+  {
+    "name": "Templos",
+    "value": 58165965,
+    "image": "https://loremflickr.com/800/500/temple"
+  },
+  {
+    "name": "Iglesias",
+    "value": 723019772,
+    "image": "https://loremflickr.com/800/500/church"
+  },
+  {
+    "name": "Mezquitas",
+    "value": 701642583,
+    "image": "https://loremflickr.com/800/500/mosque"
+  },
+  {
+    "name": "Sinagogas",
+    "value": 693830324,
+    "image": "https://loremflickr.com/800/500/synagogue"
+  },
+  {
+    "name": "Universos paralelos (teoría)",
+    "value": 65847210990,
+    "image": "https://loremflickr.com/800/500/multiverse"
+  },
+  {
+    "name": "Años bisiestos",
+    "value": 432311410,
+    "image": "https://loremflickr.com/800/500/leap+year"
+  },
+  {
+    "name": "Días festivos",
+    "value": 781913486,
+    "image": "https://loremflickr.com/800/500/holiday"
+  },
+  {
+    "name": "Huracanes",
+    "value": 364323493,
+    "image": "https://loremflickr.com/800/500/hurricane"
+  },
+  {
+    "name": "Terremotos",
+    "value": 859629760,
+    "image": "https://loremflickr.com/800/500/earthquake"
+  },
+  {
+    "name": "Tsunamis",
+    "value": 925213947,
+    "image": "https://loremflickr.com/800/500/tsunami"
+  }
+]
