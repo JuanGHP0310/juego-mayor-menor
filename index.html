@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mayor o Menor — 3 Modos (v3.3)</title>
+  <style>
+    :root{--bg:#0f1222;--card:#171a2e;--text:#e9ecf1;--muted:#a9afc3;--accent:#5dd0ff;--ok:#39d98a;--bad:#ff5d5d;--border:#242842;--ad:#101325}
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:linear-gradient(180deg,#0d1020,#0f1222 30%,#0f1222);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial;display:flex;min-height:100vh}
+    .layout{display:grid;grid-template-columns:260px 1fr 280px;grid-template-rows:auto 1fr auto;gap:16px;width:100%;max-width:1400px;margin:0 auto;padding:16px}
+    aside.left{grid-column:1;grid-row:1 / span 3;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;position:sticky;top:16px;height:calc(100vh - 32px);display:flex;flex-direction:column;gap:12px}
+    .brand{font-weight:700;letter-spacing:.3px;font-size:18px;color:var(--accent);margin-bottom:8px}
+    .mode-btn{width:100%;border:1px solid var(--border);background:#12152a;color:var(--text);padding:12px;border-radius:10px;cursor:pointer;text-align:left;transition:.2s transform,.2s background}
+    .mode-btn:hover{transform:translateY(-1px)} .mode-btn.active{outline:2px solid var(--accent);background:#111730}
+    .tip{font-size:12px;color:var(--muted);margin-top:auto}
+    main{grid-column:2;grid-row:1 / span 2;display:flex;flex-direction:column;gap:12px}
+    header.top{background:transparent;display:flex;align-items:center;justify-content:space-between;padding:4px 8px}
+    .score{font-weight:700;background:var(--card);border:1px solid var(--border);padding:10px 14px;border-radius:12px;display:inline-flex;gap:8px;align-items:center}
+    .score .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block}
+    .arena{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;display:grid;grid-template-columns:1fr 80px 1fr;gap:16px;align-items:stretch}
+    .card{background:#111526;border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between}
+    .img-wrap{aspect-ratio:16/10;background:#0b0e1d;display:flex;align-items:center;justify-content:center;position:relative}
+    /* Clave: NO forzar width/height 100% (evita upscaling). Dejamos tamaño real y solo limitamos con max-*. */
+    .img-wrap img{width:auto;height:auto;max-width:100%;max-height:100%;display:block;image-rendering:auto;object-fit:unset}
+    .svg-slot{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+    .svg-slot svg{width:100%;height:100%;object-fit:cover;display:block}
+    .content{padding:12px;display:flex;flex-direction:column;gap:8px}
+    .name{font-weight:700}
+    .value{font-variant-numeric:tabular-nums;color:var(--muted)} .value.hidden{filter:blur(6px)}
+    .vs{display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--muted)}
+    .question{font-size:14px;color:var(--muted);text-align:center}
+    .buttons{display:flex;gap:12px;margin-top:8px}
+    button.pick{flex:1;border:1px solid var(--border);background:#0e1330;color:#e9ecf1;padding:12px;border-radius:12px;cursor:pointer;font-weight:700;transition:.15s transform,.15s background}
+    button.pick:hover{transform:translateY(-1px)} button.pick:disabled{opacity:.45;cursor:not-allowed}
+    .footer-controls{display:flex;justify-content:center;margin-top:10px}
+    .next-btn{border:none;padding:12px 18px;border-radius:12px;font-weight:800;cursor:pointer;background:var(--accent);color:#081018}
+    .next-btn.secondary{background:#29304d;color:#e9ecf1;border:1px solid var(--border)}
+    .status{text-align:center;min-height:22px;color:#a9afc3;font-size:14px;margin-top:4px}
+    .status.ok{color:var(--ok)} .status.bad{color:var(--bad)}
+    .ads-right{grid-column:3;grid-row:1 / span 2;background:var(--ad);border:1px dashed #2b3156;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#6f78a8;font-size:14px;text-align:center;padding:12px;position:sticky;top:16px;height:calc(100vh - 32px)}
+    .ads-bottom{grid-column:2 / span 2;grid-row:3;background:var(--ad);border:1px dashed #2b3156;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#6f78a8;font-size:14px;padding:10px}
+    @media (max-width:1100px){.layout{grid-template-columns:1fr;grid-template-rows:auto auto auto auto}aside.left,.ads-right{position:relative;height:auto}aside.left{grid-column:1;grid-row:1}main{grid-column:1;grid-row:2}.ads-right{grid-column:1;grid-row:3}.ads-bottom{grid-column:1;grid-row:4}.arena{grid-template-columns:1fr;grid-template-rows:auto auto auto;gap:12px}.vs{order:2}}
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <aside class="left" aria-label="Selector de modo">
+      <div class="brand">Mayor o Menor</div>
+      <button class="mode-btn" data-mode="google">🔎 Lo más buscado en Google</button>
+      <button class="mode-btn" data-mode="marvel">🦸 Marvel: ¿quién ganaría?</button>
+      <button class="mode-btn" data-mode="universo">🌌 ¿Qué hay más?</button>
+      <div class="tip">Consejo: imágenes por URL HTTPS o SVG embebido. El campo <em>value</em> debe ser numérico.</div>
+      <div class="tip">Espacio para menú / enlaces extra.</div>
+    </aside>
+
+    <main>
+      <header class="top">
+        <div class="score" aria-live="polite"><span class="dot"></span> Puntuación: <span id="score">0</span></div>
+        <div id="modeName" class="score" style="gap:6px"><span class="dot"></span> <span id="modeLabel">—</span></div>
+      </header>
+
+      <section class="arena" aria-label="Zona de juego">
+        <article class="card" id="leftCard" aria-label="Opción izquierda">
+          <div class="img-wrap" id="leftWrap">
+            <img id="leftImg" alt="Imagen izquierda" loading="lazy" referrerpolicy="no-referrer">
+            <div id="leftSvg" class="svg-slot"></div>
+          </div>
+          <div class="content">
+            <div class="name" id="leftName">—</div>
+            <div class="value hidden" id="leftValue">—</div>
+            <div class="buttons">
+              <button class="pick" id="pickLeft">Elegir izquierda</button>
+            </div>
+          </div>
+        </article>
+
+        <div class="vs">
+          <div>
+            <div style="font-size:28px; font-weight:900; text-align:center; letter-spacing:.4px;">VS</div>
+            <div class="question" id="question">¿Cuál tiene MÁS?</div>
+          </div>
+        </div>
+
+        <article class="card" id="rightCard" aria-label="Opción derecha">
+          <div class="img-wrap" id="rightWrap">
+            <img id="rightImg" alt="Imagen derecha" loading="lazy" referrerpolicy="no-referrer">
+            <div id="rightSvg" class="svg-slot"></div>
+          </div>
+          <div class="content">
+            <div class="name" id="rightName">—</div>
+            <div class="value hidden" id="rightValue">—</div>
+            <div class="buttons">
+              <button class="pick" id="pickRight">Elegir derecha</button>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <div class="footer-controls">
+        <button id="nextBtn" class="next-btn secondary" disabled>Continuar</button>
+      </div>
+      <div id="status" class="status" aria-live="polite"></div>
+    </main>
+
+    <aside class="ads-right">Zona de anuncios (derecha)</aside>
+    <div class="ads-bottom">Zona de anuncios (inferior)</div>
+  </div>
+
+  <script>
+    (function(){
+      var MODES = {
+        google:  { label: "Lo más buscado en Google", file: "google_data_final.json", valueLabel:"búsquedas mensuales" },
+        marvel:  { label: "Marvel: ¿quién ganaría?", file: "marvel_data_final.json", valueLabel:"nivel de poder" },
+        universo:{ label: "¿Qué hay más?", file: "universo_data_final.json", valueLabel:"cantidad estimada" }
+      };
+      var QUESTIONS = {
+        google: "¿Cuál tiene MÁS búsquedas?",
+        marvel: "¿Quién ganaría?",
+        universo: "¿Cuál hay MÁS?"
+      };
+
+      var state = {
+        modeKey: "google",
+        data: [], leftIndex:null, rightIndex:null,
+        score:0, roundResolved:false, gameOver:false
+      };
+
+      function $(sel){ return document.querySelector(sel); }
+      function $all(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+      var statusEl = $("#status");
+      var scoreEl = $("#score");
+      var modeLabelEl = $("#modeLabel");
+      var left = { wrap: $("#leftWrap"), img: $("#leftImg"), svg: $("#leftSvg"), name: $("#leftName"), value: $("#leftValue"), btn: $("#pickLeft") };
+      var right = { wrap: $("#rightWrap"), img: $("#rightImg"), svg: $("#rightSvg"), name: $("#rightName"), value: $("#rightValue"), btn: $("#pickRight") };
+      var nextBtn = $("#nextBtn");
+      var modeButtons = $all(".mode-btn");
+      var questionEl = $("#question");
+
+      function setStatus(text, cls){
+        statusEl.className = "status" + (cls ? (" " + cls) : "");
+        statusEl.textContent = text || "";
+      }
+      function sanitizeItem(raw){
+        var name = (raw && raw.name != null ? String(raw.name) : "").trim();
+        var image = (raw && raw.image != null ? String(raw.image) : "").trim();
+        var value = raw ? raw.value : NaN;
+        if (typeof value === "string"){
+          value = value.replace(/[^\d.,-]/g,"").replace(",", ".");
+        }
+        value = Number(value);
+        return { name: name, image: image, value: isFinite(value) ? value : NaN };
+      }
+      function inlinePlaceholder(slot){
+        slot.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500"><rect width="100%" height="100%" fill="#0b0e1d"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#5dd0ff" font-family="Inter, Arial" font-size="28">Sin imagen</text></svg>';
+      }
+      function looksLikeBase64(str){
+        return str && str.length > 500 && /^[A-Za-z0-9+/=\s]+$/.test(str);
+      }
+      function fitNoUpscale(el){
+        // Recalcula tamaño del <img> para NO aumentar por encima de su resolución
+        try{
+          var img = el.img, wrap = el.wrap;
+          if (!img || !wrap || !img.naturalWidth || !img.naturalHeight) return;
+          var nw = img.naturalWidth, nh = img.naturalHeight;
+          var cw = wrap.clientWidth, ch = wrap.clientHeight;
+          var scale = Math.min(cw / nw, ch / nh, 1); // <= 1 (no upscale)
+          img.style.width = Math.round(nw * scale) + "px";
+          img.style.height = Math.round(nh * scale) + "px";
+        }catch(_){}
+      }
+      function setVisual(el, url){
+        el.svg.innerHTML = "";
+        el.img.removeAttribute("src");
+        el.img.style.display = "block";
+        // reset sizing
+        el.img.style.width = "auto";
+        el.img.style.height = "auto";
+
+        if (!url){
+          el.img.style.display = "none";
+          inlinePlaceholder(el.svg);
+          return;
+        }
+
+        var trimmed = url.trim();
+
+        // SVG inline (cadena <svg>…)
+        if (trimmed.slice(0,4).toLowerCase() === "<svg"){
+          el.img.style.display = "none";
+          el.svg.innerHTML = trimmed;
+          return;
+        }
+
+        // data:image/svg+xml
+        if (trimmed.indexOf("data:image/svg+xml") === 0){
+          try{
+            var comma = trimmed.indexOf(",");
+            var svg = trimmed.slice(comma + 1);
+            svg = decodeURIComponent(svg);
+            el.img.style.display = "none";
+            el.svg.innerHTML = svg;
+          }catch(e){
+            el.img.style.display = "none";
+            inlinePlaceholder(el.svg);
+          }
+          return;
+        }
+
+        // base64 sin prefijo -> asumir JPEG
+        if (looksLikeBase64(trimmed) && trimmed.indexOf("data:") !== 0 && trimmed.indexOf("http") !== 0){
+          trimmed = "data:image/jpeg;base64," + trimmed.replace(/\s+/g, "");
+        }
+
+        // Imagen normal
+        el.svg.innerHTML = "";
+        el.img.style.display = "block";
+        el.img.onerror = function(){
+          el.img.style.display = "none";
+          inlinePlaceholder(el.svg);
+        };
+        el.img.onload = function(){
+          fitNoUpscale(el);
+        };
+        el.img.src = trimmed;
+      }
+
+      function setCard(el, item, valueLabel, hidden){
+        if (hidden === void 0) hidden = true;
+        el.name.textContent = item.name || "—";
+        el.value.textContent = (isFinite(item.value) ? (item.value.toLocaleString() + " " + valueLabel) : "Dato no válido");
+        el.value.classList.toggle("hidden", !!hidden);
+        setVisual(el, item.image);
+        el.btn.disabled = false;
+      }
+
+      function disableChoices(disabled){
+        if (disabled === void 0) disabled = true;
+        left.btn.disabled = disabled;
+        right.btn.disabled = disabled;
+      }
+      function getTwoDistinctIndices(max){
+        if (max < 2) return [0,0];
+        var a = Math.floor(Math.random()*max);
+        var b = Math.floor(Math.random()*max);
+        while (b === a){ b = Math.floor(Math.random()*max); }
+        return [a,b];
+      }
+      function updateScore(v){
+        state.score = v;
+        scoreEl.textContent = String(v);
+      }
+
+      function renderRound(first){
+        if (first === void 0) first = false;
+        var valueLabel = MODES[state.modeKey].valueLabel;
+        var pair = getTwoDistinctIndices(state.data.length);
+        var a = pair[0], b = pair[1];
+        state.leftIndex = a; state.rightIndex = b;
+        state.roundResolved = false; state.gameOver = false;
+
+        var leftItem = state.data[a];
+        var rightItem = state.data[b];
+
+        setCard(left, leftItem, valueLabel, true);
+        setCard(right, rightItem, valueLabel, true);
+
+        disableChoices(false);
+        nextBtn.disabled = true;
+        nextBtn.textContent = "Continuar";
+        nextBtn.classList.add("secondary");
+        setStatus(first ? "Seleccione una opción." : "Nueva ronda: elija la opción con valor MÁS alto.");
+      }
+
+      function revealValues(correct){
+        var valueLabel = MODES[state.modeKey].valueLabel;
+        var L = state.data[state.leftIndex];
+        var R = state.data[state.rightIndex];
+        left.value.textContent = L.value.toLocaleString() + " " + valueLabel;
+        right.value.textContent = R.value.toLocaleString() + " " + valueLabel;
+        left.value.classList.remove("hidden");
+        right.value.classList.remove("hidden");
+        setStatus(correct ? "¡Correcto! +1 punto." : "¡Falló! Fin de partida.", correct ? "ok" : "bad");
+      }
+
+      function handlePick(side){
+        if (state.roundResolved || state.gameOver) return;
+        var L = state.data[state.leftIndex];
+        var R = state.data[state.rightIndex];
+        var leftWins = L.value >= R.value;
+        var pickedLeft = (side === "left");
+        var correct = pickedLeft ? leftWins : !leftWins;
+
+        revealValues(correct);
+        state.roundResolved = true;
+        disableChoices(true);
+        nextBtn.disabled = false;
+        nextBtn.classList.remove("secondary");
+
+        if (correct){
+          updateScore(state.score + 1);
+          nextBtn.textContent = "Continuar";
+        } else {
+          state.gameOver = true;
+          nextBtn.textContent = "Reiniciar";
+        }
+      }
+
+      function attachEvents(){
+        left.btn.addEventListener("click", function(){ handlePick("left"); });
+        right.btn.addEventListener("click", function(){ handlePick("right"); });
+        nextBtn.addEventListener("click", function(){
+          if (state.gameOver){
+            updateScore(0);
+            renderRound(true);
+          } else if (state.roundResolved){
+            renderRound(false);
+          }
+        });
+        modeButtons.forEach(function(btn){
+          btn.addEventListener("click", function(){ loadMode(btn.getAttribute("data-mode")); });
+        });
+        // Reajusta en resize para mantener no-upscale
+        window.addEventListener("resize", function(){
+          fitNoUpscale(left);
+          fitNoUpscale(right);
+        });
+      }
+
+      function loadMode(modeKey){
+        state = { modeKey: modeKey, data: [], leftIndex:null, rightIndex:null, score:0, roundResolved:false, gameOver:false };
+        updateScore(0);
+        setStatus("Cargando datos…");
+        modeButtons.forEach(function(b){ b.classList.toggle("active", b.getAttribute("data-mode") === modeKey); });
+        modeLabelEl.textContent = MODES[modeKey].label;
+        questionEl.textContent = QUESTIONS[modeKey] || "¿Cuál tiene MÁS?";
+        fetch(MODES[modeKey].file, { cache: "no-store" }).then(function(res){
+          if(!res.ok) throw new Error("No se pudo cargar " + MODES[modeKey].file);
+          return res.json();
+        }).then(function(json){
+          var arr = Array.isArray(json) ? json.map(sanitizeItem).filter(function(it){ return it.name && isFinite(it.value); }) : [];
+          if (arr.length < 2) throw new Error("El JSON debe contener al menos 2 elementos válidos con name, value, image.");
+          state.data = arr;
+          setStatus("Datos cargados: " + arr.length + " elementos.");
+          renderRound(true);
+        }).catch(function(err){
+          console.error(err);
+          setStatus(err.message || "Error al cargar datos.", "bad");
+          setCard(left, {name:"—", value:NaN, image:""}, MODES[modeKey].valueLabel, true);
+          setCard(right,{name:"—", value:NaN, image:""}, MODES[modeKey].valueLabel, true);
+        });
+      }
+
+      window.addEventListener("load", function(){
+        attachEvents();
+        loadMode("google");
+      });
+    })();
+  </script>
+</body>
+</html>
