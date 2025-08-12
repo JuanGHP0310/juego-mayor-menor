@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mayor o Menor — DEBUG</title>
+  <style>
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial;background:#0f1222;color:#e9ecf1}
+    .banner{position:fixed;left:0;right:0;top:0;padding:10px 14px;background:#3a0d0d;color:#ffd5d5;border-bottom:1px solid #6b2222;z-index:9999;display:none}
+    .banner.show{display:block}
+    .wrap{padding:70px 16px 16px}
+    .row{display:flex;gap:12px;align-items:center}
+    .btn{padding:8px 12px;border-radius:8px;background:#122042;color:#e9ecf1;border:1px solid #2a355e;cursor:pointer}
+    .log{white-space:pre-wrap;background:#0c152f;border:1px solid #28345e;border-radius:8px;padding:10px;margin-top:12px;max-height:240px;overflow:auto}
+    .status{margin-top:6px;color:#a9afc3}
+    .game{border:1px dashed #31406f;border-radius:10px;padding:12px;margin-top:12px}
+    .cards{display:grid;grid-template-columns:1fr 80px 1fr;gap:12px;margin-top:10px}
+    .card{background:#111526;border:1px solid #242842;border-radius:10px;overflow:hidden}
+    .img{aspect-ratio:16/10;background:#0b0e1d}
+    .img img{width:100%;height:100%;object-fit:cover;display:block}
+    .content{padding:10px}
+    .name{font-weight:700}
+    .value{color:#a9afc3}
+    .value.hidden{filter:blur(6px)}
+    .pick{margin-top:8px}
+  </style>
+</head>
+<body>
+  <div id="banner" class="banner"></div>
+  <div class="wrap">
+    <div class="row">
+      <button class="btn" data-mode="google">Modo Google</button>
+      <button class="btn" data-mode="marvel">Modo Marvel</button>
+      <button class="btn" data-mode="universo">Modo Universo</button>
+      <span class="status">Puntuación: <b id="score">0</b> — Modo: <b id="modeLabel">—</b></span>
+    </div>
+    <div class="row">
+      <button id="testBtn" class="btn">Prueba rápida (cargar demo si falla JSON)</button>
+    </div>
+    <div id="log" class="log"></div>
+
+    <div class="game">
+      <div>Pregunta: <b id="question">—</b></div>
+      <div class="cards">
+        <div class="card">
+          <div class="img"><img id="leftImg" alt=""></div>
+          <div class="content">
+            <div class="name" id="leftName">—</div>
+            <div class="value hidden" id="leftValue">—</div>
+            <button id="pickLeft" class="btn pick">Elegir izquierda</button>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center;font-weight:800;color:#a9afc3">VS</div>
+        <div class="card">
+          <div class="img"><img id="rightImg" alt=""></div>
+          <div class="content">
+            <div class="name" id="rightName">—</div>
+            <div class="value hidden" id="rightValue">—</div>
+            <button id="pickRight" class="btn pick">Elegir derecha</button>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:10px">
+        <button id="nextBtn" class="btn">Continuar</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    const LOG = document.getElementById('log');
+    const BANNER = document.getElementById('banner');
+    function log(msg){ LOG.textContent += msg + "\n"; console.log(msg); }
+    function showError(msg){ BANNER.textContent = "⚠️ " + msg; BANNER.classList.add('show'); log("[ERROR] " + msg); }
+
+    const MODES = {
+      google:  { label: "Lo más buscado en Google", file: "google_data_final.json", valueLabel:"búsquedas mensuales" },
+      marvel:  { label: "Poder Marvel", file: "marvel_data_final.json", valueLabel:"nivel de poder" },
+      universo:{ label: "¿Qué hay más?", file: "universo_data_final.json", valueLabel:"cantidad estimada" }
+    };
+    const QUESTIONS = {
+      google: "¿Cuál tiene MÁS búsquedas?",
+      marvel: "¿Quién tiene MÁS poder?",
+      universo: "¿Cuál hay MÁS?"
+    };
+
+    let state = {
+      modeKey: "google",
+      data: [], leftIndex:null, rightIndex:null,
+      score: 0, roundResolved:false, gameOver:false
+    };
+
+    const $ = sel => document.querySelector(sel);
+    const scoreEl = $("#score");
+    const modeLabelEl = $("#modeLabel");
+    const questionEl = $("#question");
+    const left = { img: $("#leftImg"), name: $("#leftName"), value: $("#leftValue"), btn: $("#pickLeft") };
+    const right = { img: $("#rightImg"), name: $("#rightName"), value: $("#rightValue"), btn: $("#pickRight") };
+    const nextBtn = $("#nextBtn");
+
+    function sanitizeItem(raw){
+      const name = String(raw.name ?? "").trim();
+      const image = String(raw.image ?? "").trim();
+      let value = raw.value;
+      if (typeof value === "string") value = value.replace(/[^\d.,-]/g,"").replace(",","."); 
+      value = Number(value);
+      return { name, image, value: Number.isFinite(value) ? value : NaN };
+    }
+    const PLACEHOLDER = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500"><rect width="100%" height="100%" fill="#0b0e1d"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#5dd0ff" font-family="Inter, Arial" font-size="28">Sin imagen</text></svg>');
+    function setCard(el, item, valueLabel, hidden=true){
+      el.name.textContent = item.name || "—";
+      el.value.textContent = Number.isFinite(item.value) ? (item.value.toLocaleString() + " " + valueLabel) : "Dato no válido";
+      el.value.classList.toggle("hidden", !!hidden);
+      el.img.src = item.image || PLACEHOLDER;
+      el.img.onerror = () => { el.img.src = PLACEHOLDER; };
+      el.btn.disabled = false;
+    }
+    function disableChoices(d=true){ left.btn.disabled=d; right.btn.disabled=d; }
+    function getTwoDistinctIndices(max){
+      if(max < 2) return [0,0];
+      let a = Math.floor(Math.random()*max), b = Math.floor(Math.random()*max);
+      while(b===a){ b = Math.floor(Math.random()*max); }
+      return [a,b];
+    }
+    function updateScore(v){ state.score=v; scoreEl.textContent=String(v); }
+
+    async function loadMode(modeKey, allowFallback=false){
+      try{
+        BANNER.classList.remove('show');
+        state = { modeKey, data: [], leftIndex:null, rightIndex:null, score:0, roundResolved:false, gameOver:false };
+        updateScore(0);
+        modeLabelEl.textContent = MODES[modeKey].label;
+        questionEl.textContent = QUESTIONS[modeKey];
+        log("Intentando cargar: " + MODES[modeKey].file + " (modo " + modeKey + ")");
+        const res = await fetch(MODES[modeKey].file, { cache: "no-store" });
+        log("Fetch status: " + res.status + " " + res.statusText);
+        if(!res.ok) throw new Error("No se pudo cargar " + MODES[modeKey].file + " (HTTP " + res.status + ")");
+        const json = await res.json();
+        log("JSON recibido. Array=" + Array.isArray(json) + ", length=" + (Array.isArray(json)?json.length:"n/a"));
+        const parsed = Array.isArray(json) ? json.map(sanitizeItem).filter(it => it.name && Number.isFinite(it.value)) : [];
+        log("Elementos válidos: " + parsed.length);
+        if(parsed.length < 2) throw new Error("El JSON debe contener al menos 2 elementos válidos con name, value, image.");
+        state.data = parsed;
+        renderRound(true);
+      }catch(e){
+        showError(e.message);
+        if(allowFallback){
+          log("Cargando DEMO fallback");
+          state.data = [
+            {name:"Demo A", value:10, image:PLACEHOLDER},
+            {name:"Demo B", value:20, image:PLACEHOLDER},
+            {name:"Demo C", value:5, image:PLACEHOLDER}
+          ];
+          renderRound(true);
+        }
+      }
+    }
+
+    function renderRound(first=false){
+      const valueLabel = MODES[state.modeKey].valueLabel;
+      const [a,b] = getTwoDistinctIndices(state.data.length);
+      state.leftIndex=a; state.rightIndex=b; state.roundResolved=false; state.gameOver=false;
+      const L = state.data[a], R = state.data[b];
+      setCard(left, L, valueLabel, true);
+      setCard(right, R, valueLabel, true);
+      disableChoices(false);
+      nextBtn.textContent = "Continuar"; nextBtn.disabled = true;
+      log("Ronda preparada: L="+L.name+"("+L.value+"), R="+R.name+"("+R.value+")");
+    }
+
+    function revealValues(correct){
+      const valueLabel = MODES[state.modeKey].valueLabel;
+      const L = state.data[state.leftIndex]; const R = state.data[state.rightIndex];
+      left.value.textContent = L.value.toLocaleString() + " " + valueLabel;
+      right.value.textContent = R.value.toLocaleString() + " " + valueLabel;
+      left.value.classList.remove("hidden");
+      right.value.classList.remove("hidden");
+      log(correct ? "Resultado: CORRECTO" : "Resultado: FALLO");
+    }
+
+    function handlePick(side){
+      if(state.roundResolved || state.gameOver){ log("Click ignorado: ronda ya resuelta"); return; }
+      const L = state.data[state.leftIndex];
+      const R = state.data[state.rightIndex];
+      const leftWins = L.value >= R.value;
+      const pickedLeft = (side === "left");
+      const correct = pickedLeft ? leftWins : !leftWins;
+      revealValues(correct);
+      state.roundResolved = true;
+      disableChoices(true);
+      nextBtn.disabled = false;
+      if(correct){ updateScore(state.score+1); nextBtn.textContent="Continuar"; }
+      else{ state.gameOver = true; nextBtn.textContent="Reiniciar"; }
+    }
+
+    left.btn.addEventListener("click", () => handlePick("left"));
+    right.btn.addEventListener("click", () => handlePick("right"));
+    nextBtn.addEventListener("click", () => {
+      if(state.gameOver){ updateScore(0); renderRound(true); }
+      else if(state.roundResolved){ renderRound(false); }
+      else{ log("Pulse izquierda o derecha primero."); }
+    });
+
+    document.querySelectorAll('[data-mode]').forEach(b => b.addEventListener('click', () => loadMode(b.dataset.mode, true)));
+
+    document.getElementById('testBtn').addEventListener('click', () => loadMode(state.modeKey, true));
+
+    window.addEventListener("load", () => {
+      loadMode("google", true);
+    });
+  </script>
+</body>
+</html>
