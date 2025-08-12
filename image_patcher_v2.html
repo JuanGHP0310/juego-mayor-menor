@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patcher v2 — Marvel y «¿Qué hay más?»</title>
+<style>
+  :root{--bg:#0f1222;--card:#171a2e;--text:#e9ecf1;--muted:#a9afc3;--accent:#5dd0ff;--ok:#39d98a;--bad:#ff5d5d;--border:#242842}
+  body{margin:0;background:linear-gradient(180deg,#0d1020,#0f1222);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial;min-height:100vh;display:flex;align-items:center;justify-content:center}
+  .wrap{width:min(980px,92vw);background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
+  h1{margin:0 0 10px;font-size:20px;color:var(--accent)}
+  p{margin:.5em 0;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;margin-top:10px}
+  input[type=text]{width:100%;padding:10px;border-radius:10px;border:1px solid var(--border);background:#111526;color:var(--text)}
+  input[type=file]{padding:8px;border-radius:10px;border:1px solid var(--border);background:#111526;color:var(--text)}
+  button{padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:#0e1330;color:var(--text);cursor:pointer;font-weight:700}
+  button.primary{background:var(--accent);color:#081018;border-color:transparent}
+  .section{margin-top:14px;padding-top:12px;border-top:1px dashed #2b2f54}
+  .log{margin-top:12px;background:#0b0e1d;border:1px dashed #2a2f4a;border-radius:10px;padding:10px;min-height:120px;white-space:pre-wrap;color:#cbd3ff;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+  .small{font-size:12px;color:#99a2c8}
+  .hint{font-size:12px;color:#b5bcee}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Patcher v2 — Marvel y «¿Qué hay más?»</h1>
+  <p>Soluciona imágenes inexistentes llenando el campo <code>image</code> con fotos libres (Unsplash). Puedes hacerlo de dos formas:</p>
+  <ol class="small">
+    <li><strong>Cargar por URL</strong> desde tu GitHub Pages.</li>
+    <li><strong>Subir el JSON</strong> desde tu ordenador (sin CORS, más simple).</li>
+  </ol>
+
+  <div class="section">
+    <p class="hint">Ruta base detectada: <code id="autoBase"></code> (ajústala si tu página está en <em>/usuario/<b>repo</b>/</em>). Para tu repo puede ser <code>/juego-mayor-menor/</code>.</p>
+    <div class="grid">
+      <input id="base" type="text" value="" />
+      <button id="btnMarvel" class="primary">Cargar y generar <b>marvel_data_final.json</b></button>
+      <button id="btnUniv" class="primary">Cargar y generar <b>universo_data_final.json</b></button>
+    </div>
+  </div>
+
+  <div class="section">
+    <p>O bien, sube el archivo JSON y genera el nuevo:</p>
+    <div class="grid" style="grid-template-columns:1fr auto;">
+      <input id="fileMarvel" type="file" accept="application/json">
+      <button id="btnMarvelFile">Generar <b>marvel_data_final.json</b> desde archivo</button>
+    </div>
+    <div class="grid" style="grid-template-columns:1fr auto;margin-top:8px">
+      <input id="fileUniv" type="file" accept="application/json">
+      <button id="btnUnivFile">Generar <b>universo_data_final.json</b> desde archivo</button>
+    </div>
+  </div>
+
+  <div class="log" id="log">Listo. Elige un método y pulsa un botón…</div>
+  <p class="small">Nota: Unsplash puede devolver imágenes distintas en cada carga. Si luego quieres imágenes fijas/curadas (Wikimedia), te preparo otra versión.</p>
+</div>
+
+<script>
+function log(msg){ const el=document.getElementById('log'); el.textContent += (el.textContent? '\n':'') + msg; el.scrollTop=el.scrollHeight; }
+function saveJSON(name, data){
+  const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+  const a = Object.assign(document.createElement('a'), {href:URL.createObjectURL(blob), download:name});
+  document.body.appendChild(a); a.click(); URL.revokeObjectURL(a.href); a.remove();
+}
+function sanitizeName(n){
+  n = String(n||'').trim();
+  n = n.replace(/\s*\([^)]*\)\s*/g,' ').replace(/\s{2,}/g,' ').trim();
+  return n;
+}
+
+// --- MARVEL ---
+function marvelKeyword(name){
+  const raw = sanitizeName(name);
+  const map = {
+    "spider-man":"spiderman cosplay",
+    "hombre araña":"spiderman cosplay",
+    "iron man":"iron man cosplay suit",
+    "captain america":"captain america cosplay shield",
+    "capitán américa":"captain america cosplay shield",
+    "black widow":"black widow cosplay",
+    "thor":"thor cosplay",
+    "hulk":"hulk cosplay",
+    "wolverine":"wolverine cosplay",
+    "black panther":"black panther cosplay",
+    "doctor strange":"doctor strange cosplay",
+    "scarlet witch":"scarlet witch cosplay",
+    "wanda maximoff":"scarlet witch cosplay",
+    "vision":"vision cosplay",
+    "ant-man":"ant-man cosplay helmet",
+    "wasp":"wasp cosplay",
+    "captain marvel":"captain marvel cosplay",
+    "thanos":"thanos cosplay",
+    "loki":"loki cosplay",
+    "hawkeye":"archer cosplay",
+    "deadpool":"deadpool cosplay",
+    "magneto":"magneto cosplay",
+    "doctor doom":"doctor doom cosplay",
+    "venom":"venom cosplay",
+    "daredevil":"daredevil cosplay",
+    "punisher":"punisher cosplay",
+    "starlord":"starlord cosplay helmet",
+    "star-lord":"starlord cosplay helmet",
+    "gamora":"gamora cosplay",
+    "groot":"tree man cosplay",
+    "rocket raccoon":"raccoon cosplay"
+  };
+  const k = raw.toLowerCase();
+  return map[k] || (raw + " cosplay");
+}
+
+// --- UNIVERSO ---
+function universoKeyword(name){
+  const raw = sanitizeName(name);
+  const dict = {"elefantes":"elephant","museos":"museum","ordenadores":"computer","aves":"birds","serpientes":"snake","libros":"books","árboles":"trees","coches":"car","aviones":"airplane","perros":"dog","gatos":"cat","ballenas":"whale","tiburones":"shark","planetas":"planet","estrellas":"stars"};
+  const k = raw.toLowerCase();
+  return dict[k] || raw;
+}
+
+function patchArray(data, kind){
+  const arr = Array.isArray(data) ? data : [];
+  return arr.map(it=>{
+    const name = sanitizeName(it.name);
+    const kw = kind==="marvel" ? marvelKeyword(name) : universoKeyword(name);
+    const image = "https://source.unsplash.com/800x500/?"+encodeURIComponent(kw);
+    return { ...it, name, image };
+  });
+}
+
+async function fetchJSON(url){
+  const res = await fetch(url, {cache:"no-store"});
+  if(!res.ok) throw new Error("HTTP "+res.status);
+  return res.json();
+}
+
+function autoBasePath(){
+  const p = location.pathname.replace(/[^\/]*$/,"");
+  return p || "/";
+}
+
+document.getElementById('autoBase').textContent = autoBasePath();
+document.getElementById('base').value = autoBasePath();
+
+// Cargar por URL
+document.getElementById('btnMarvel').addEventListener('click', async ()=>{
+  const base = (document.getElementById('base').value||'/').replace(/\/?$/,'/');
+  const url = base + "marvel_data_final.json?cb=" + Date.now();
+  try{
+    log("— Cargando "+url+" …");
+    const data = await fetchJSON(url);
+    const out = patchArray(data, "marvel");
+    saveJSON("marvel_data_final.json", out);
+    log("  ✓ Generadas "+out.length+" imágenes (Unsplash «… cosplay»).");
+  }catch(e){
+    log("  ✖ No se pudo cargar el JSON ("+(e.message||e)+"). Prueba con base: /juego-mayor-menor/ o usa la opción 'desde archivo'.");
+  }
+});
+
+document.getElementById('btnUniv').addEventListener('click', async ()=>{
+  const base = (document.getElementById('base').value||'/').replace(/\/?$/,'/');
+  const url = base + "universo_data_final.json?cb=" + Date.now();
+  try{
+    log("— Cargando "+url+" …");
+    const data = await fetchJSON(url);
+    const out = patchArray(data, "univ");
+    saveJSON("universo_data_final.json", out);
+    log("  ✓ Generadas "+out.length+" imágenes (Unsplash).");
+  }catch(e){
+    log("  ✖ No se pudo cargar el JSON ("+(e.message||e)+"). Prueba con base: /juego-mayor-menor/ o usa la opción 'desde archivo'.");
+  }
+});
+
+// Desde archivo
+function readFile(input){
+  return new Promise((resolve,reject)=>{
+    const f = input.files && input.files[0];
+    if(!f) return reject("No se ha seleccionado archivo.");
+    const reader = new FileReader();
+    reader.onload = () => {
+      try{ resolve(JSON.parse(reader.result)); }
+      catch(err){ reject("JSON inválido."); }
+    };
+    reader.onerror = () => reject("No se pudo leer el archivo.");
+    reader.readAsText(f, "utf-8");
+  });
+}
+
+document.getElementById('btnMarvelFile').addEventListener('click', async ()=>{
+  try{
+    log("— Leyendo archivo Marvel…");
+    const data = await readFile(document.getElementById('fileMarvel'));
+    const out = patchArray(data, "marvel");
+    saveJSON("marvel_data_final.json", out);
+    log("  ✓ Listo. Sube el archivo reemplazando el del repo.");
+  }catch(e){ log("  ✖ "+e); }
+});
+
+document.getElementById('btnUnivFile').addEventListener('click', async ()=>{
+  try{
+    log("— Leyendo archivo Universo…");
+    const data = await readFile(document.getElementById('fileUniv'));
+    const out = patchArray(data, "univ");
+    saveJSON("universo_data_final.json", out);
+    log("  ✓ Listo. Sube el archivo reemplazando el del repo.");
+  }catch(e){ log("  ✖ "+e); }
+});
+</script>
+</body>
+</html>
