@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Patcher v3 — (LoremFlickr)</title>
+<style>
+  :root{--bg:#0f1222;--card:#171a2e;--text:#e9ecf1;--muted:#a9afc3;--accent:#5dd0ff;--border:#242842}
+  body{margin:0;background:linear-gradient(180deg,#0d1020,#0f1222);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial;min-height:100vh;display:flex;align-items:center;justify-content:center}
+  .wrap{width:min(980px,92vw);background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px}
+  h1{margin:0 0 10px;font-size:20px;color:var(--accent)}
+  p{margin:.5em 0;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;margin-top:10px}
+  input[type=file]{padding:8px;border-radius:10px;border:1px solid var(--border);background:#111526;color:#e9ecf1}
+  button{padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:#0e1330;color:#e9ecf1;cursor:pointer;font-weight:700}
+  button.primary{background:var(--accent);color:#081018;border-color:transparent}
+  .log{margin-top:12px;background:#0b0e1d;border:1px dashed #2a2f4a;border-radius:10px;padding:10px;min-height:120px;white-space:pre-wrap;color:#cbd3ff;font-family:ui-monospace,SFMono-Regular,Consolas,monospace}
+  .small{font-size:12px;color:#99a2c8}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Patcher v3 — genera imágenes con <em>loremflickr.com</em></h1>
+  <p>Sube tu JSON y te devuelvo otro con el campo <code>image</code> rellenado usando <code>https://loremflickr.com/800/500/&lt;keyword&gt;</code> (no requiere API y suele pasar filtros).</p>
+  <div class="grid">
+    <input id="file" type="file" accept="application/json">
+    <button id="btn" class="primary">Generar JSON con imágenes</button>
+  </div>
+  <div class="log" id="log">Listo. Sube un archivo y pulsa el botón.</div>
+</div>
+
+<script>
+function log(msg){ const el=document.getElementById('log'); el.textContent += (el.textContent? '\\n':'') + msg; el.scrollTop=el.scrollHeight; }
+function saveJSON(name, data){
+  const blob = new Blob([JSON.stringify(data,null,2)], {type:'application/json'});
+  const a = Object.assign(document.createElement('a'), {href:URL.createObjectURL(blob), download:name});
+  document.body.appendChild(a); a.click(); URL.revokeObjectURL(a.href); a.remove();
+}
+function sanitizeName(n){ n=String(n||'').trim(); n=n.replace(/\\s*\\([^)]*\\)\\s*/g,' ').replace(/\\s{2,}/g,' ').trim(); return n; }
+
+function keywordFor(name){
+  const raw = sanitizeName(name);
+  const dict = {"elefantes":"elephant","museos":"museum","ordenadores":"computer","aves":"birds","serpientes":"snake","libros":"books","árboles":"trees","coches":"car","aviones":"airplane","perros":"dog","gatos":"cat","ballenas":"whale","tiburones":"shark","planetas":"planet","estrellas":"stars"};
+  const k = raw.toLowerCase();
+  return dict[k] || raw;
+}
+
+function marvelKeyword(name){
+  const raw = sanitizeName(name);
+  const map = {"spider-man":"spiderman","hombre araña":"spiderman","iron man":"iron man","captain america":"captain america","capitán américa":"captain america","black widow":"black widow","thor":"thor","hulk":"hulk","wolverine":"wolverine","black panther":"black panther","doctor strange":"doctor strange","scarlet witch":"scarlet witch","wanda maximoff":"scarlet witch","vision":"vision","ant-man":"ant man","wasp":"wasp","captain marvel":"captain marvel","thanos":"thanos","loki":"loki","deadpool":"deadpool","magneto":"magneto","venom":"venom","daredevil":"daredevil","punisher":"punisher","starlord":"star lord","star-lord":"star lord","gamora":"gamora","groot":"groot","rocket raccoon":"raccoon"};
+  const k = raw.toLowerCase();
+  return map[k] || raw;
+}
+
+function patchArray(data){
+  const arr = Array.isArray(data) ? data : [];
+  const guessMarvel = arr.every(it => typeof it.value === 'number' && (it.name||'').length>0) && arr.some(it => /thor|hulk|iron|wolverine|thanos|spider/i.test(it.name||''));
+  return arr.map(it=>{
+    const name = sanitizeName(it.name);
+    const kw = guessMarvel ? marvelKeyword(name) : keywordFor(name);
+    const image = "https://loremflickr.com/800/500/" + encodeURIComponent(kw);
+    return { ...it, name, image };
+  });
+}
+
+function readFile(input){
+  return new Promise((resolve,reject)=>{
+    const f = input.files && input.files[0];
+    if(!f) return reject("No se ha seleccionado archivo.");
+    const reader = new FileReader();
+    reader.onload = () => {
+      try{ resolve(JSON.parse(reader.result)); }
+      catch(err){ reject("JSON inválido."); }
+    };
+    reader.onerror = () => reject("No se pudo leer el archivo.");
+    reader.readAsText(f, "utf-8");
+  });
+}
+
+document.getElementById('btn').addEventListener('click', async ()=>{
+  try{
+    log("— Leyendo archivo…");
+    const data = await readFile(document.getElementById('file'));
+    const out = patchArray(data);
+    saveJSON("data_con_imagenes.json", out);
+    log("  ✓ Listo. Sube el archivo reemplazando el del repo.");
+  }catch(e){
+    log("  ✖ "+e);
+  }
+});
+</script>
+</body>
+</html>
