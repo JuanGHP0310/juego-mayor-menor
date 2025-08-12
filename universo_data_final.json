@@ -1,0 +1,542 @@
+[
+  {
+    "name": "Humanos",
+    "value": 8050000000,
+    "image": "https://source.unsplash.com/800x500/?Humanos"
+  },
+  {
+    "name": "Hombres",
+    "value": 4025000000,
+    "image": "https://source.unsplash.com/800x500/?Hombres"
+  },
+  {
+    "name": "Mujeres",
+    "value": 4025000000,
+    "image": "https://source.unsplash.com/800x500/?Mujeres"
+  },
+  {
+    "name": "Niños",
+    "value": 2000000000,
+    "image": "https://source.unsplash.com/800x500/?Ni%C3%B1os"
+  },
+  {
+    "name": "Mayores",
+    "value": 760000000,
+    "image": "https://source.unsplash.com/800x500/?Mayores"
+  },
+  {
+    "name": "Ciudades",
+    "value": 100000,
+    "image": "https://source.unsplash.com/800x500/?Ciudades"
+  },
+  {
+    "name": "Pueblos",
+    "value": 1000000,
+    "image": "https://source.unsplash.com/800x500/?Pueblos"
+  },
+  {
+    "name": "Países",
+    "value": 195,
+    "image": "https://source.unsplash.com/800x500/?Pa%C3%ADses"
+  },
+  {
+    "name": "Islas",
+    "value": 900000,
+    "image": "https://source.unsplash.com/800x500/?Islas"
+  },
+  {
+    "name": "Continentes",
+    "value": 7,
+    "image": "https://source.unsplash.com/800x500/?Continentes"
+  },
+  {
+    "name": "Océanos",
+    "value": 5,
+    "image": "https://source.unsplash.com/800x500/?Oc%C3%A9anos"
+  },
+  {
+    "name": "Ríos",
+    "value": 165000,
+    "image": "https://source.unsplash.com/800x500/?R%C3%ADos"
+  },
+  {
+    "name": "Lagos",
+    "value": 117000000,
+    "image": "https://source.unsplash.com/800x500/?Lagos"
+  },
+  {
+    "name": "Montañas",
+    "value": 1000000,
+    "image": "https://source.unsplash.com/800x500/?Monta%C3%B1as"
+  },
+  {
+    "name": "Volcanes",
+    "value": 1500,
+    "image": "https://source.unsplash.com/800x500/?Volcanes"
+  },
+  {
+    "name": "Bosques",
+    "value": 4000000,
+    "image": "https://source.unsplash.com/800x500/?Bosques"
+  },
+  {
+    "name": "Árboles",
+    "value": 3000000000000,
+    "image": "https://source.unsplash.com/800x500/?trees"
+  },
+  {
+    "name": "Flores",
+    "value": 400000000000000,
+    "image": "https://source.unsplash.com/800x500/?Flores"
+  },
+  {
+    "name": "Animales",
+    "value": 1000000000000,
+    "image": "https://source.unsplash.com/800x500/?Animales"
+  },
+  {
+    "name": "Peces",
+    "value": 35000000000000,
+    "image": "https://source.unsplash.com/800x500/?Peces"
+  },
+  {
+    "name": "Aves",
+    "value": 50000000000,
+    "image": "https://source.unsplash.com/800x500/?birds"
+  },
+  {
+    "name": "Mamíferos",
+    "value": 130000000000,
+    "image": "https://source.unsplash.com/800x500/?Mam%C3%ADferos"
+  },
+  {
+    "name": "Perros",
+    "value": 900000000,
+    "image": "https://source.unsplash.com/800x500/?dog"
+  },
+  {
+    "name": "Gatos",
+    "value": 600000000,
+    "image": "https://source.unsplash.com/800x500/?cat"
+  },
+  {
+    "name": "Vacas",
+    "value": 1000000000,
+    "image": "https://source.unsplash.com/800x500/?Vacas"
+  },
+  {
+    "name": "Cerdos",
+    "value": 1000000000,
+    "image": "https://source.unsplash.com/800x500/?Cerdos"
+  },
+  {
+    "name": "Gallinas",
+    "value": 25000000000,
+    "image": "https://source.unsplash.com/800x500/?Gallinas"
+  },
+  {
+    "name": "Caballos",
+    "value": 60000000,
+    "image": "https://source.unsplash.com/800x500/?Caballos"
+  },
+  {
+    "name": "Elefantes",
+    "value": 500000,
+    "image": "https://source.unsplash.com/800x500/?elephant"
+  },
+  {
+    "name": "Tigres",
+    "value": 5000,
+    "image": "https://source.unsplash.com/800x500/?Tigres"
+  },
+  {
+    "name": "Osos panda",
+    "value": 1900,
+    "image": "https://source.unsplash.com/800x500/?Osos%20panda"
+  },
+  {
+    "name": "Hormigas",
+    "value": 20000000000000000,
+    "image": "https://source.unsplash.com/800x500/?Hormigas"
+  },
+  {
+    "name": "Abejas",
+    "value": 3000000000000,
+    "image": "https://source.unsplash.com/800x500/?Abejas"
+  },
+  {
+    "name": "Mosquitos",
+    "value": 100000000000000,
+    "image": "https://source.unsplash.com/800x500/?Mosquitos"
+  },
+  {
+    "name": "Bacterias en la Tierra",
+    "value": 1e+30,
+    "image": "https://source.unsplash.com/800x500/?Bacterias%20en%20la%20Tierra"
+  },
+  {
+    "name": "Virus en la Tierra",
+    "value": 1e+34,
+    "image": "https://source.unsplash.com/800x500/?Virus%20en%20la%20Tierra"
+  },
+  {
+    "name": "Estrellas del universo observable",
+    "value": 2e+24,
+    "image": "https://source.unsplash.com/800x500/?Estrellas%20del%20universo%20observable"
+  },
+  {
+    "name": "Galaxias del universo observable",
+    "value": 2000000000000,
+    "image": "https://source.unsplash.com/800x500/?Galaxias%20del%20universo%20observable"
+  },
+  {
+    "name": "Estrellas en la Vía Láctea",
+    "value": 100000000000,
+    "image": "https://source.unsplash.com/800x500/?Estrellas%20en%20la%20V%C3%ADa%20L%C3%A1ctea"
+  },
+  {
+    "name": "Planetas en la Vía Láctea",
+    "value": 100000000000,
+    "image": "https://source.unsplash.com/800x500/?Planetas%20en%20la%20V%C3%ADa%20L%C3%A1ctea"
+  },
+  {
+    "name": "Planetas en el sistema solar",
+    "value": 8,
+    "image": "https://source.unsplash.com/800x500/?Planetas%20en%20el%20sistema%20solar"
+  },
+  {
+    "name": "Lunas en el sistema solar",
+    "value": 290,
+    "image": "https://source.unsplash.com/800x500/?Lunas%20en%20el%20sistema%20solar"
+  },
+  {
+    "name": "Asteroides",
+    "value": 1000000,
+    "image": "https://source.unsplash.com/800x500/?Asteroides"
+  },
+  {
+    "name": "Cometas",
+    "value": 4000000000,
+    "image": "https://source.unsplash.com/800x500/?Cometas"
+  },
+  {
+    "name": "Granitos de arena",
+    "value": 7500000000000000000,
+    "image": "https://source.unsplash.com/800x500/?Granitos%20de%20arena"
+  },
+  {
+    "name": "Gotas de agua en el océano",
+    "value": 1.4e+24,
+    "image": "https://source.unsplash.com/800x500/?Gotas%20de%20agua%20en%20el%20oc%C3%A9ano"
+  },
+  {
+    "name": "Litros de agua en los océanos",
+    "value": 1.4e+21,
+    "image": "https://source.unsplash.com/800x500/?Litros%20de%20agua%20en%20los%20oc%C3%A9anos"
+  },
+  {
+    "name": "Moléculas en un vaso de agua",
+    "value": 8e+24,
+    "image": "https://source.unsplash.com/800x500/?Mol%C3%A9culas%20en%20un%20vaso%20de%20agua"
+  },
+  {
+    "name": "Células en el cuerpo humano",
+    "value": 37000000000000,
+    "image": "https://source.unsplash.com/800x500/?C%C3%A9lulas%20en%20el%20cuerpo%20humano"
+  },
+  {
+    "name": "Neuronas en un cerebro humano",
+    "value": 86000000000,
+    "image": "https://source.unsplash.com/800x500/?Neuronas%20en%20un%20cerebro%20humano"
+  },
+  {
+    "name": "Glóbulos rojos en un humano",
+    "value": 25000000000000,
+    "image": "https://source.unsplash.com/800x500/?Gl%C3%B3bulos%20rojos%20en%20un%20humano"
+  },
+  {
+    "name": "Kilómetros de ADN en un humano",
+    "value": 2000000000,
+    "image": "https://source.unsplash.com/800x500/?Kil%C3%B3metros%20de%20ADN%20en%20un%20humano"
+  },
+  {
+    "name": "Bicicletas",
+    "value": 1000000000,
+    "image": "https://source.unsplash.com/800x500/?Bicicletas"
+  },
+  {
+    "name": "Coches",
+    "value": 1500000000,
+    "image": "https://source.unsplash.com/800x500/?car"
+  },
+  {
+    "name": "Motos",
+    "value": 600000000,
+    "image": "https://source.unsplash.com/800x500/?Motos"
+  },
+  {
+    "name": "Camiones",
+    "value": 400000000,
+    "image": "https://source.unsplash.com/800x500/?Camiones"
+  },
+  {
+    "name": "Aviones",
+    "value": 200000,
+    "image": "https://source.unsplash.com/800x500/?airplane"
+  },
+  {
+    "name": "Barcos",
+    "value": 100000,
+    "image": "https://source.unsplash.com/800x500/?Barcos"
+  },
+  {
+    "name": "Smartphones en uso",
+    "value": 6200000000,
+    "image": "https://source.unsplash.com/800x500/?Smartphones%20en%20uso"
+  },
+  {
+    "name": "Ordenadores",
+    "value": 2000000000,
+    "image": "https://source.unsplash.com/800x500/?computer"
+  },
+  {
+    "name": "Televisores",
+    "value": 1700000000,
+    "image": "https://source.unsplash.com/800x500/?Televisores"
+  },
+  {
+    "name": "Consolas de videojuegos",
+    "value": 600000000,
+    "image": "https://source.unsplash.com/800x500/?Consolas%20de%20videojuegos"
+  },
+  {
+    "name": "Servidores",
+    "value": 100000000,
+    "image": "https://source.unsplash.com/800x500/?Servidores"
+  },
+  {
+    "name": "Satélites en órbita",
+    "value": 10000,
+    "image": "https://source.unsplash.com/800x500/?Sat%C3%A9lites%20en%20%C3%B3rbita"
+  },
+  {
+    "name": "Estaciones de servicio",
+    "value": 1500000,
+    "image": "https://source.unsplash.com/800x500/?Estaciones%20de%20servicio"
+  },
+  {
+    "name": "Escuelas",
+    "value": 5000000,
+    "image": "https://source.unsplash.com/800x500/?Escuelas"
+  },
+  {
+    "name": "Universidades",
+    "value": 25000,
+    "image": "https://source.unsplash.com/800x500/?Universidades"
+  },
+  {
+    "name": "Hospitales",
+    "value": 170000,
+    "image": "https://source.unsplash.com/800x500/?Hospitales"
+  },
+  {
+    "name": "Farmacias",
+    "value": 4000000,
+    "image": "https://source.unsplash.com/800x500/?Farmacias"
+  },
+  {
+    "name": "Bibliotecas",
+    "value": 320000,
+    "image": "https://source.unsplash.com/800x500/?Bibliotecas"
+  },
+  {
+    "name": "Museos",
+    "value": 95000,
+    "image": "https://source.unsplash.com/800x500/?museum"
+  },
+  {
+    "name": "Aeropuertos",
+    "value": 41000,
+    "image": "https://source.unsplash.com/800x500/?Aeropuertos"
+  },
+  {
+    "name": "Puentes",
+    "value": 1000000,
+    "image": "https://source.unsplash.com/800x500/?Puentes"
+  },
+  {
+    "name": "Carreteras",
+    "value": 64000000,
+    "image": "https://source.unsplash.com/800x500/?Carreteras"
+  },
+  {
+    "name": "Ferrocarril",
+    "value": 1000000,
+    "image": "https://source.unsplash.com/800x500/?Ferrocarril"
+  },
+  {
+    "name": "Edificios",
+    "value": 1200000000,
+    "image": "https://source.unsplash.com/800x500/?Edificios"
+  },
+  {
+    "name": "Viviendas",
+    "value": 2400000000,
+    "image": "https://source.unsplash.com/800x500/?Viviendas"
+  },
+  {
+    "name": "Rascacielos",
+    "value": 6000,
+    "image": "https://source.unsplash.com/800x500/?Rascacielos"
+  },
+  {
+    "name": "Idiomas vivos",
+    "value": 7100,
+    "image": "https://source.unsplash.com/800x500/?Idiomas%20vivos"
+  },
+  {
+    "name": "Palabras en español",
+    "value": 93000,
+    "image": "https://source.unsplash.com/800x500/?Palabras%20en%20espa%C3%B1ol"
+  },
+  {
+    "name": "Libros publicados al año",
+    "value": 2200000,
+    "image": "https://source.unsplash.com/800x500/?Libros%20publicados%20al%20a%C3%B1o"
+  },
+  {
+    "name": "Páginas web",
+    "value": 1200000000,
+    "image": "https://source.unsplash.com/800x500/?P%C3%A1ginas%20web"
+  },
+  {
+    "name": "Correos electrónicos al día",
+    "value": 300000000000,
+    "image": "https://source.unsplash.com/800x500/?Correos%20electr%C3%B3nicos%20al%20d%C3%ADa"
+  },
+  {
+    "name": "Mensajes instantáneos al día",
+    "value": 100000000000,
+    "image": "https://source.unsplash.com/800x500/?Mensajes%20instant%C3%A1neos%20al%20d%C3%ADa"
+  },
+  {
+    "name": "Fotos subidas al día",
+    "value": 3000000000,
+    "image": "https://source.unsplash.com/800x500/?Fotos%20subidas%20al%20d%C3%ADa"
+  },
+  {
+    "name": "Videos subidos al día",
+    "value": 720000000,
+    "image": "https://source.unsplash.com/800x500/?Videos%20subidos%20al%20d%C3%ADa"
+  },
+  {
+    "name": "Kilómetros a la Luna",
+    "value": 384400,
+    "image": "https://source.unsplash.com/800x500/?Kil%C3%B3metros%20a%20la%20Luna"
+  },
+  {
+    "name": "Kilómetros al Sol",
+    "value": 149600000,
+    "image": "https://source.unsplash.com/800x500/?Kil%C3%B3metros%20al%20Sol"
+  },
+  {
+    "name": "Segundos en un día",
+    "value": 86400,
+    "image": "https://source.unsplash.com/800x500/?Segundos%20en%20un%20d%C3%ADa"
+  },
+  {
+    "name": "Minutos en un año",
+    "value": 525600,
+    "image": "https://source.unsplash.com/800x500/?Minutos%20en%20un%20a%C3%B1o"
+  },
+  {
+    "name": "Horas en un siglo",
+    "value": 876000,
+    "image": "https://source.unsplash.com/800x500/?Horas%20en%20un%20siglo"
+  },
+  {
+    "name": "Pasos que da una persona/año",
+    "value": 2000000,
+    "image": "https://source.unsplash.com/800x500/?Pasos%20que%20da%20una%20persona%2Fa%C3%B1o"
+  },
+  {
+    "name": "Litros de aire inhalados/día",
+    "value": 11000,
+    "image": "https://source.unsplash.com/800x500/?Litros%20de%20aire%20inhalados%2Fd%C3%ADa"
+  },
+  {
+    "name": "Granos de arroz cosechados/año",
+    "value": 20000000000000000,
+    "image": "https://source.unsplash.com/800x500/?Granos%20de%20arroz%20cosechados%2Fa%C3%B1o"
+  },
+  {
+    "name": "Tazas de café consumidas/día",
+    "value": 2250000000,
+    "image": "https://source.unsplash.com/800x500/?Tazas%20de%20caf%C3%A9%20consumidas%2Fd%C3%ADa"
+  },
+  {
+    "name": "Pizzas consumidas/año",
+    "value": 5000000000,
+    "image": "https://source.unsplash.com/800x500/?Pizzas%20consumidas%2Fa%C3%B1o"
+  },
+  {
+    "name": "Calorías consumidas/día",
+    "value": 20000000000000,
+    "image": "https://source.unsplash.com/800x500/?Calor%C3%ADas%20consumidas%2Fd%C3%ADa"
+  },
+  {
+    "name": "Bolas de helado/año",
+    "value": 50000000000,
+    "image": "https://source.unsplash.com/800x500/?Bolas%20de%20helado%2Fa%C3%B1o"
+  },
+  {
+    "name": "Kilogramos de papel/año",
+    "value": 400000000000,
+    "image": "https://source.unsplash.com/800x500/?Kilogramos%20de%20papel%2Fa%C3%B1o"
+  },
+  {
+    "name": "Toneladas de CO₂/año",
+    "value": 37000000000,
+    "image": "https://source.unsplash.com/800x500/?Toneladas%20de%20CO%E2%82%82%2Fa%C3%B1o"
+  },
+  {
+    "name": "Plástico producido/año",
+    "value": 400000000,
+    "image": "https://source.unsplash.com/800x500/?Pl%C3%A1stico%20producido%2Fa%C3%B1o"
+  },
+  {
+    "name": "Residuos sólidos urbanos/año",
+    "value": 2000000000,
+    "image": "https://source.unsplash.com/800x500/?Residuos%20s%C3%B3lidos%20urbanos%2Fa%C3%B1o"
+  },
+  {
+    "name": "Energia solar recibida",
+    "value": 1000,
+    "image": "https://source.unsplash.com/800x500/?Energia%20solar%20recibida"
+  },
+  {
+    "name": "Rayos que caen al año",
+    "value": 1400000000,
+    "image": "https://source.unsplash.com/800x500/?Rayos%20que%20caen%20al%20a%C3%B1o"
+  },
+  {
+    "name": "Terremotos al año",
+    "value": 500000,
+    "image": "https://source.unsplash.com/800x500/?Terremotos%20al%20a%C3%B1o"
+  },
+  {
+    "name": "Erupciones volcánicas/año",
+    "value": 60,
+    "image": "https://source.unsplash.com/800x500/?Erupciones%20volc%C3%A1nicas%2Fa%C3%B1o"
+  },
+  {
+    "name": "Tormentas tropicales/año",
+    "value": 90,
+    "image": "https://source.unsplash.com/800x500/?Tormentas%20tropicales%2Fa%C3%B1o"
+  },
+  {
+    "name": "Arcoíris al día",
+    "value": 100000,
+    "image": "https://source.unsplash.com/800x500/?Arco%C3%ADris%20al%20d%C3%ADa"
+  }
+]
