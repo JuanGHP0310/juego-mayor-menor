@@ -1,0 +1,502 @@
+[
+  {
+    "name": "The One Above All",
+    "value": 100,
+    "image": "https://picsum.photos/seed/The-One-Above-All/800/500"
+  },
+  {
+    "name": "Living Tribunal",
+    "value": 99,
+    "image": "https://picsum.photos/seed/Living-Tribunal/800/500"
+  },
+  {
+    "name": "Beyonder (pre-retcon)",
+    "value": 98,
+    "image": "https://picsum.photos/seed/Beyonder-pre-retcon/800/500"
+  },
+  {
+    "name": "Molecule Man (pleno poder)",
+    "value": 97,
+    "image": "https://picsum.photos/seed/Molecule-Man-pleno-poder/800/500"
+  },
+  {
+    "name": "Infinity",
+    "value": 96,
+    "image": "https://picsum.photos/seed/Infinity/800/500"
+  },
+  {
+    "name": "Eternity",
+    "value": 96,
+    "image": "https://picsum.photos/seed/Eternity/800/500"
+  },
+  {
+    "name": "Phoenix Force",
+    "value": 95,
+    "image": "https://picsum.photos/seed/Phoenix-Force/800/500"
+  },
+  {
+    "name": "Galactus (bien alimentado)",
+    "value": 94,
+    "image": "https://picsum.photos/seed/Galactus-bien-alimentado/800/500"
+  },
+  {
+    "name": "Oblivion",
+    "value": 94,
+    "image": "https://picsum.photos/seed/Oblivion/800/500"
+  },
+  {
+    "name": "Death (Muerte)",
+    "value": 94,
+    "image": "https://picsum.photos/seed/Death-Muerte/800/500"
+  },
+  {
+    "name": "Lord Chaos & Master Order",
+    "value": 93,
+    "image": "https://picsum.photos/seed/Lord-Chaos-Master-Order/800/500"
+  },
+  {
+    "name": "The Fulcrum",
+    "value": 93,
+    "image": "https://picsum.photos/seed/The-Fulcrum/800/500"
+  },
+  {
+    "name": "Franklin Richards (adulto)",
+    "value": 92,
+    "image": "https://picsum.photos/seed/Franklin-Richards-adulto/800/500"
+  },
+  {
+    "name": "Nemesis (Infinity Gems unidas)",
+    "value": 92,
+    "image": "https://picsum.photos/seed/Nemesis-Infinity-Gems-unidas/800/500"
+  },
+  {
+    "name": "Marquis of Death",
+    "value": 91,
+    "image": "https://picsum.photos/seed/Marquis-of-Death/800/500"
+  },
+  {
+    "name": "Heart of the Universe (portador)",
+    "value": 91,
+    "image": "https://picsum.photos/seed/Heart-of-the-Universe-portador/800/500"
+  },
+  {
+    "name": "Mad Jim Jaspers",
+    "value": 90,
+    "image": "https://picsum.photos/seed/Mad-Jim-Jaspers/800/500"
+  },
+  {
+    "name": "Hyperstorm",
+    "value": 90,
+    "image": "https://picsum.photos/seed/Hyperstorm/800/500"
+  },
+  {
+    "name": "Doctor Doom (Beyonder/Doomwarp)",
+    "value": 89,
+    "image": "https://picsum.photos/seed/Doctor-Doom-Beyonder-Doomwarp/800/500"
+  },
+  {
+    "name": "Thor (Rune King Thor)",
+    "value": 89,
+    "image": "https://picsum.photos/seed/Thor-Rune-King-Thor/800/500"
+  },
+  {
+    "name": "Odin",
+    "value": 88,
+    "image": "https://picsum.photos/seed/Odin/800/500"
+  },
+  {
+    "name": "Surtur",
+    "value": 88,
+    "image": "https://picsum.photos/seed/Surtur/800/500"
+  },
+  {
+    "name": "Zeus (Marvel)",
+    "value": 87,
+    "image": "https://picsum.photos/seed/Zeus-Marvel/800/500"
+  },
+  {
+    "name": "Hercules (apex)",
+    "value": 86,
+    "image": "https://picsum.photos/seed/Hercules-apex/800/500"
+  },
+  {
+    "name": "Doctor Strange (Sorcerer Supreme, pico)",
+    "value": 85,
+    "image": "https://picsum.photos/seed/Doctor-Strange-Sorcerer-Supreme-pico/800/500"
+  },
+  {
+    "name": "Scarlet Witch (House of M)",
+    "value": 85,
+    "image": "https://picsum.photos/seed/Scarlet-Witch-House-of-M/800/500"
+  },
+  {
+    "name": "Silver Surfer",
+    "value": 84,
+    "image": "https://picsum.photos/seed/Silver-Surfer/800/500"
+  },
+  {
+    "name": "Adam Warlock (con Gema Alma)",
+    "value": 84,
+    "image": "https://picsum.photos/seed/Adam-Warlock-con-Gema-Alma/800/500"
+  },
+  {
+    "name": "Black Bolt",
+    "value": 83,
+    "image": "https://picsum.photos/seed/Black-Bolt/800/500"
+  },
+  {
+    "name": "Hulk (World Breaker Hulk)",
+    "value": 83,
+    "image": "https://picsum.photos/seed/Hulk-World-Breaker-Hulk/800/500"
+  },
+  {
+    "name": "Blue Marvel",
+    "value": 82,
+    "image": "https://picsum.photos/seed/Blue-Marvel/800/500"
+  },
+  {
+    "name": "Sentry (The Void)",
+    "value": 82,
+    "image": "https://picsum.photos/seed/Sentry-The-Void/800/500"
+  },
+  {
+    "name": "Captain Marvel (Carol Danvers, binaria)",
+    "value": 81,
+    "image": "https://picsum.photos/seed/Captain-Marvel-Carol-Danvers-binaria/800/500"
+  },
+  {
+    "name": "Magneto (pico clásico)",
+    "value": 80,
+    "image": "https://picsum.photos/seed/Magneto-pico-cl-sico/800/500"
+  },
+  {
+    "name": "Jean Grey (Fénix huésped)",
+    "value": 80,
+    "image": "https://picsum.photos/seed/Jean-Grey-F-nix-hu-sped/800/500"
+  },
+  {
+    "name": "Professor X",
+    "value": 79,
+    "image": "https://picsum.photos/seed/Professor-X/800/500"
+  },
+  {
+    "name": "Apocalypse",
+    "value": 79,
+    "image": "https://picsum.photos/seed/Apocalypse/800/500"
+  },
+  {
+    "name": "Doctor Doom (estándar)",
+    "value": 78,
+    "image": "https://picsum.photos/seed/Doctor-Doom-est-ndar/800/500"
+  },
+  {
+    "name": "Thanos (sin Guantelete)",
+    "value": 78,
+    "image": "https://picsum.photos/seed/Thanos-sin-Guantelete/800/500"
+  },
+  {
+    "name": "Thanos (con Guantelete del Infinito)",
+    "value": 95,
+    "image": "https://picsum.photos/seed/Thanos-con-Guantelete-del-Infinito/800/500"
+  },
+  {
+    "name": "Loki (pico mágico)",
+    "value": 77,
+    "image": "https://picsum.photos/seed/Loki-pico-m-gico/800/500"
+  },
+  {
+    "name": "Vision",
+    "value": 76,
+    "image": "https://picsum.photos/seed/Vision/800/500"
+  },
+  {
+    "name": "Namor",
+    "value": 75,
+    "image": "https://picsum.photos/seed/Namor/800/500"
+  },
+  {
+    "name": "Black Panther (T'Challa, con preparación)",
+    "value": 75,
+    "image": "https://picsum.photos/seed/Black-Panther-T-Challa-con-preparaci-n/800/500"
+  },
+  {
+    "name": "Iron Man (Bleeding Edge)",
+    "value": 74,
+    "image": "https://picsum.photos/seed/Iron-Man-Bleeding-Edge/800/500"
+  },
+  {
+    "name": "Reed Richards (Mr. Fantastic, con preparación)",
+    "value": 74,
+    "image": "https://picsum.photos/seed/Reed-Richards-Mr-Fantastic-con-preparaci-n/800/500"
+  },
+  {
+    "name": "Invisible Woman (pico)",
+    "value": 73,
+    "image": "https://picsum.photos/seed/Invisible-Woman-pico/800/500"
+  },
+  {
+    "name": "Human Torch (Nova Burst)",
+    "value": 73,
+    "image": "https://picsum.photos/seed/Human-Torch-Nova-Burst/800/500"
+  },
+  {
+    "name": "Wolverine",
+    "value": 72,
+    "image": "https://picsum.photos/seed/Wolverine/800/500"
+  },
+  {
+    "name": "Cyclops",
+    "value": 71,
+    "image": "https://picsum.photos/seed/Cyclops/800/500"
+  },
+  {
+    "name": "Storm (Ororo, pico planetario)",
+    "value": 80,
+    "image": "https://picsum.photos/seed/Storm-Ororo-pico-planetario/800/500"
+  },
+  {
+    "name": "Quicksilver",
+    "value": 70,
+    "image": "https://picsum.photos/seed/Quicksilver/800/500"
+  },
+  {
+    "name": "Iceman (omega)",
+    "value": 82,
+    "image": "https://picsum.photos/seed/Iceman-omega/800/500"
+  },
+  {
+    "name": "Colossus",
+    "value": 69,
+    "image": "https://picsum.photos/seed/Colossus/800/500"
+  },
+  {
+    "name": "Juggernaut (poder de Cyttorak)",
+    "value": 82,
+    "image": "https://picsum.photos/seed/Juggernaut-poder-de-Cyttorak/800/500"
+  },
+  {
+    "name": "Deadpool",
+    "value": 68,
+    "image": "https://picsum.photos/seed/Deadpool/800/500"
+  },
+  {
+    "name": "Hawkeye",
+    "value": 65,
+    "image": "https://picsum.photos/seed/Hawkeye/800/500"
+  },
+  {
+    "name": "Black Widow",
+    "value": 65,
+    "image": "https://picsum.photos/seed/Black-Widow/800/500"
+  },
+  {
+    "name": "Daredevil",
+    "value": 66,
+    "image": "https://picsum.photos/seed/Daredevil/800/500"
+  },
+  {
+    "name": "Moon Knight",
+    "value": 68,
+    "image": "https://picsum.photos/seed/Moon-Knight/800/500"
+  },
+  {
+    "name": "Shang-Chi",
+    "value": 66,
+    "image": "https://picsum.photos/seed/Shang-Chi/800/500"
+  },
+  {
+    "name": "Ghost Rider (Johnny Blaze, Zarathos)",
+    "value": 84,
+    "image": "https://picsum.photos/seed/Ghost-Rider-Johnny-Blaze-Zarathos/800/500"
+  },
+  {
+    "name": "Blade",
+    "value": 66,
+    "image": "https://picsum.photos/seed/Blade/800/500"
+  },
+  {
+    "name": "Punisher",
+    "value": 64,
+    "image": "https://picsum.photos/seed/Punisher/800/500"
+  },
+  {
+    "name": "Spider-Man (Peter Parker)",
+    "value": 76,
+    "image": "https://picsum.photos/seed/Spider-Man-Peter-Parker/800/500"
+  },
+  {
+    "name": "Spider-Man (Miles Morales)",
+    "value": 73,
+    "image": "https://picsum.photos/seed/Spider-Man-Miles-Morales/800/500"
+  },
+  {
+    "name": "Spider-Gwen (Ghost-Spider)",
+    "value": 72,
+    "image": "https://picsum.photos/seed/Spider-Gwen-Ghost-Spider/800/500"
+  },
+  {
+    "name": "Venom (Eddie Brock)",
+    "value": 78,
+    "image": "https://picsum.photos/seed/Venom-Eddie-Brock/800/500"
+  },
+  {
+    "name": "Carnage",
+    "value": 79,
+    "image": "https://picsum.photos/seed/Carnage/800/500"
+  },
+  {
+    "name": "Doctor Octopus",
+    "value": 70,
+    "image": "https://picsum.photos/seed/Doctor-Octopus/800/500"
+  },
+  {
+    "name": "Green Goblin",
+    "value": 71,
+    "image": "https://picsum.photos/seed/Green-Goblin/800/500"
+  },
+  {
+    "name": "Kingpin",
+    "value": 67,
+    "image": "https://picsum.photos/seed/Kingpin/800/500"
+  },
+  {
+    "name": "Ms. Marvel (Kamala Khan)",
+    "value": 70,
+    "image": "https://picsum.photos/seed/Ms-Marvel-Kamala-Khan/800/500"
+  },
+  {
+    "name": "She-Hulk (Jennifer Walters)",
+    "value": 77,
+    "image": "https://picsum.photos/seed/She-Hulk-Jennifer-Walters/800/500"
+  },
+  {
+    "name": "Ant-Man (Scott Lang)",
+    "value": 70,
+    "image": "https://picsum.photos/seed/Ant-Man-Scott-Lang/800/500"
+  },
+  {
+    "name": "Wasp (Janet Van Dyne)",
+    "value": 70,
+    "image": "https://picsum.photos/seed/Wasp-Janet-Van-Dyne/800/500"
+  },
+  {
+    "name": "Star-Lord",
+    "value": 69,
+    "image": "https://picsum.photos/seed/Star-Lord/800/500"
+  },
+  {
+    "name": "Gamora",
+    "value": 75,
+    "image": "https://picsum.photos/seed/Gamora/800/500"
+  },
+  {
+    "name": "Drax",
+    "value": 73,
+    "image": "https://picsum.photos/seed/Drax/800/500"
+  },
+  {
+    "name": "Groot",
+    "value": 70,
+    "image": "https://picsum.photos/seed/Groot/800/500"
+  },
+  {
+    "name": "Rocket Raccoon",
+    "value": 68,
+    "image": "https://picsum.photos/seed/Rocket-Raccoon/800/500"
+  },
+  {
+    "name": "Mantis",
+    "value": 69,
+    "image": "https://picsum.photos/seed/Mantis/800/500"
+  },
+  {
+    "name": "Nova (Richard Rider)",
+    "value": 82,
+    "image": "https://picsum.photos/seed/Nova-Richard-Rider/800/500"
+  },
+  {
+    "name": "Quasar",
+    "value": 83,
+    "image": "https://picsum.photos/seed/Quasar/800/500"
+  },
+  {
+    "name": "Ronan the Accuser",
+    "value": 78,
+    "image": "https://picsum.photos/seed/Ronan-the-Accuser/800/500"
+  },
+  {
+    "name": "Ultron",
+    "value": 82,
+    "image": "https://picsum.photos/seed/Ultron/800/500"
+  },
+  {
+    "name": "Kang the Conqueror",
+    "value": 83,
+    "image": "https://picsum.photos/seed/Kang-the-Conqueror/800/500"
+  },
+  {
+    "name": "Immortus (Kang)",
+    "value": 84,
+    "image": "https://picsum.photos/seed/Immortus-Kang/800/500"
+  },
+  {
+    "name": "Captain America (Steve Rogers)",
+    "value": 70,
+    "image": "https://picsum.photos/seed/Captain-America-Steve-Rogers/800/500"
+  },
+  {
+    "name": "Bucky Barnes (Winter Soldier)",
+    "value": 69,
+    "image": "https://picsum.photos/seed/Bucky-Barnes-Winter-Soldier/800/500"
+  },
+  {
+    "name": "Falcon (Sam Wilson)",
+    "value": 68,
+    "image": "https://picsum.photos/seed/Falcon-Sam-Wilson/800/500"
+  },
+  {
+    "name": "Nick Fury",
+    "value": 66,
+    "image": "https://picsum.photos/seed/Nick-Fury/800/500"
+  },
+  {
+    "name": "War Machine",
+    "value": 73,
+    "image": "https://picsum.photos/seed/War-Machine/800/500"
+  },
+  {
+    "name": "Pepper Potts (Rescue)",
+    "value": 70,
+    "image": "https://picsum.photos/seed/Pepper-Potts-Rescue/800/500"
+  },
+  {
+    "name": "Hela",
+    "value": 86,
+    "image": "https://picsum.photos/seed/Hela/800/500"
+  },
+  {
+    "name": "Valkyrie",
+    "value": 75,
+    "image": "https://picsum.photos/seed/Valkyrie/800/500"
+  },
+  {
+    "name": "Heimdall",
+    "value": 76,
+    "image": "https://picsum.photos/seed/Heimdall/800/500"
+  },
+  {
+    "name": "Beta Ray Bill",
+    "value": 82,
+    "image": "https://picsum.photos/seed/Beta-Ray-Bill/800/500"
+  },
+  {
+    "name": "Ares",
+    "value": 80,
+    "image": "https://picsum.photos/seed/Ares/800/500"
+  },
+  {
+    "name": "Ikaris (Eternal)",
+    "value": 82,
+    "image": "https://picsum.photos/seed/Ikaris-Eternal/800/500"
+  }
+]
